@@ -1,0 +1,52 @@
+.Rbody
+{
+	padding-left: 70%;
+	padding-top: 10%;
+	margin: 0;	
+}
+body
+{
+	background: url(https://img.freepik.com/free-photo/blur-hospital_1203-7957.jpg?size=626&ext=jpg);
+	background-size: cover;
+}
+.head
+{
+  padding-left: 30%;
+
+}
+input
+{
+	background-color: transparent;
+}
+select
+{
+	background-color: transparent;
+}
+.para
+{
+	padding-left: 90px;
+	padding-top: 60px;
+	font-size: 40px;
+}
+.sb
+{
+	left: 20%;
+
+}
+.s
+{
+ height:30px;
+ width: 80px;
+ background-color:#7677ff;
+}
+.loginbox
+{
+	width:400px;
+	height: 480px;
+	background-color:rgba(142, 169, 240, 0.69);
+	top:15%;
+	left:65%;
+	position: absolute;
+	box-sizing: border-box;
+	z-index: 1;
+}

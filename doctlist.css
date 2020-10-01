@@ -1,0 +1,65 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	background: url(https://cdn3.vectorstock.com/i/1000x1000/43/07/low-poly-gray-pattern-vector-22374307.jpg);
+	background-size: cover;
+}
+.head
+{
+	padding-top: 20px;
+	padding-left: 400px;
+}
+input
+{
+	height: 25px;
+	width: 620px;
+	background-color:transparent;
+	border-radius: 10px;	
+}
+button
+{
+	height: 30.1px;
+	border-radius: 10px;
+	
+}
+.logo
+{
+  float: left;
+  font-size: 50px;
+}
+.logo a 
+{
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  padding: 5px 20px;
+}
+.doct
+{
+	width:1500px;
+	margin-left: 20px;
+	margin-top: 100px;
+}
+.card
+{
+	box-shadow: 0 8px 16px 0 rgb(14, 38, 61);
+	transition: 0.4s;
+	width: 300px;
+	background: white;
+	text-align: center;
+	font-size: 15px;
+	float:left;
+	margin:10px;
+	
+}
+img
+{
+	width: 300px;
+	height: 250px;
+}
+.card:hover
+{
+	box-shadow: 0 16px 32px 0 rgb(14, 38, 61);
+}
+

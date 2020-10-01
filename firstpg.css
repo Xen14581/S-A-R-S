@@ -1,0 +1,44 @@
+body
+{
+	background: url(https://img.freepik.com/free-photo/doctor-with-stethoscope-hand-hospital-background-medical-medicine-concept_34200-278.jpg?size=626&ext=jpg);
+	background-size: cover;
+}
+.hea
+{
+	padding-left: 100px;
+	font-size: 25px;
+}
+.logbox
+{
+	width:400px;
+	height:380px;
+	background-color:rgb(0,0,0);
+	color: white;
+	padding-left: 20px;
+	top:30%;
+	left:20%;
+	position: absolute;
+	box-sizing: border-box;
+}
+.page
+{
+	padding-left: 150px;
+	padding-top: 20px;
+}
+.Lb
+{
+	padding-left: 150px;
+	
+}
+.Lb:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.or
+{
+  
+  padding-left: 160px;
+}
+.new
+{
+	padding-left: 110px;
+}

@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Century Gothic;
+}
+
+body{
+  background-image: url(https://www.indezine.com/powerpoint/template/templates/t_ind_0609a.jpg);
+  background-position: center center;
+  height: 98vh;
+  background-size: cover;
+}
+
+ul {
+  margin-top: 10px;
+  list-style-type: none;
+  padding-left: 500px; 
+  padding-top: 22px;
+
+}
+
+ul li {
+  display: inline-block;
+}
+
+ul li a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 40px;
+  border: 1px solid black;
+  transition: 0.6s ease;
+}
+
+ul li a:hover {
+  background-color:#cccac5;
+  color: #000;
+}
+.logo {
+  float: left;
+  font-size: 50px;
+}
+.logo a {
+  text-decoration: none;
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  padding: 5px 20px;
+}
