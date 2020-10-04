@@ -1,0 +1,67 @@
+.login__background {
+  background-image: url("https://www.northeastohiogastro.com/wp-content/uploads/stethoscope-wallpaper.jpg");
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.login__box {
+  margin: 0;
+  font-family: sans-serif;
+  width: 280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.login__box > h1 {
+  float: left;
+  color: white;
+  font-size: 40px;
+  border-bottom: 6px solid lightgrey;
+  margin-bottom: 50px;
+  padding: 13px;
+}
+
+.login__textbox {
+  width: 100%;
+  overflow: hidden;
+  padding: 8px 0px;
+  margin: 8px 0px;
+  border-bottom: 3px solid #fff;
+  display: flex;
+}
+
+.login__textbox > input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 20px;
+  color: white;
+  width: 100px;
+  float: left;
+  margin: 0 10px;
+}
+
+.login__textbox > input::placeholder {
+  color: white;
+}
+
+.login__box > a {
+  display: inline-block;
+  padding: 10px 50px;
+  border: 2px solid white;
+  font-size: 20px;
+  color: white;
+  margin-bottom: 20px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.login__box > a:hover {
+  color: black;
+  background: white;
+  transition: 200ms ease-in-out;
+}
