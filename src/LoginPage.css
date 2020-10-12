@@ -49,19 +49,33 @@
   color: white;
 }
 
-.login__box > a {
+.login__button > button {
+  text-align: center;
+  border-radius: 6px;
   display: inline-block;
   padding: 10px 50px;
   border: 2px solid white;
   font-size: 20px;
   color: white;
-  margin-bottom: 20px;
   margin: 10px;
   text-decoration: none;
+  background: none;
 }
 
-.login__box > a:hover {
+.login__button > button:hover {
   color: black;
   background: white;
   transition: 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transform: scale(1.04) !important;
+}
+
+.login__button > button:focus {
+  outline: none;
+}
+
+.login__box>p{
+  font-weight: bold;
+  font-size:20px ;
+  margin-left:60px;
 }

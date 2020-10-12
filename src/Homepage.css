@@ -1,0 +1,67 @@
+.home__background {
+  background-image: url("https://www.wallpapertip.com/wmimgs/48-487775_medical-hd-wallpaper-1080p-1080p-medical-wallpaper-hd.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+}
+
+.home__header > h1 {
+  
+  position: relative;
+  padding: 0 8%;
+  font-family: arial;
+  bottom: 100%;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bolder;
+  font-family: arial;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.home__textbox {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 45%;
+  padding: 40px 0;
+  text-align: center;
+  border-top-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: bold;
+}
+
+.home__textbox > p {
+  margin-top: 10px;
+  padding: 0 8%;
+  font-family: merienda;
+  z-index: 1;
+}
+
+.home__button > button {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 50px;
+  border: 2px solid #fff;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 7px;
+  background: none;
+}
+
+.home__button > button:hover {
+  background-color: white;
+  color: black;
+  transition: 200ms ease-in-out;
+}
+
+.home__button > button:focus {
+  outline: none;
+}
