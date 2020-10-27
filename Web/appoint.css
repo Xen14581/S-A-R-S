@@ -1,0 +1,103 @@
+body
+{
+  background-image: url(https://www.indezine.com/powerpoint/template/templates/t_ind_0609a.jpg);
+  background-position: center center;
+  height: 98vh;
+  background-size: cover;
+}
+.card
+{
+	box-shadow: 0 8px 16px 0 rgb(14, 38, 61);
+	transition: 0.4s;
+	width:300px;
+	height:40px;
+	background: white;
+	text-align: center;
+	font-size: 15px;
+	margin:10px;
+}
+.doct
+{
+	padding-left:35%;
+}
+.containt
+{
+	padding-top: 5px;
+	margin: 10px;
+	text-align: center;
+}
+.bar
+{
+	padding-top:90px;
+	display:flex;    
+    align-items:center;
+    padding-left: 60px;
+}
+.slots
+{
+	padding-top:10px;
+	display:flex;    
+    align-items:center;
+    padding-left: 60px;
+}
+ul {
+  margin-top: 10px;
+  list-style-type: none;
+  padding-left: 300px; 
+  padding-top: 22px;
+
+}
+
+ul li {
+  display: inline-block;
+}
+
+ul li a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 40px;
+  border: 1px solid black;
+  transition: 0.6s ease;
+}
+
+ul li a:hover {
+  background-color:#cccac5;
+  color: #000;
+}
+.slideshow-container {
+  position:relative;
+  background:rgb(181, 201, 201);
+}
+.mySlides {
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width:auto;
+  margin-top: -30px;
+  padding: 16px;
+  color: #888;
+  font-weight: bold;
+  font-size: 10px;
+  border-radius: 0 3px 3px 0;
+  user-select:none;
+}
+.next {
+  position: absolute;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+.align
+{
+  display: inline;
+}
+
+
