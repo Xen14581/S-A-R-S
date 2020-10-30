@@ -37,26 +37,53 @@ button
 }
 .doct
 {
-	width:1500px;
+	width:1200px;
+	height:100px;
 	margin-left: 20px;
 	margin-top: 100px;
 }
-.card
+.card 
 {
 	box-shadow: 0 8px 16px 0 rgb(14, 38, 61);
 	transition: 0.4s;
-	width:300px;
+	width:500px;
 	background: white;
 	text-align: center;
 	font-size: 15px;
 	float:left;
 	margin:10px;
-	
+}
+.card img
+{
+	text-align: left;
+	font-size: 15px;
+	float:left;
+	margin:10px;
+}
+.containt
+{
+	padding-top: 5px;
+	margin: 10px;
+	text-align: center;
+}
+.b
+{
+	height: 30.1px;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+	width: 180px;
+	margin: 10px;
+}
+.b:hover
+{
+	box-shadow: 0 2px 4px 0 rgb(14, 38, 61);
 }
 img
 {
-	width: 300px;
-	height: 120px;
+	align-self: left;
+	width:250px;
+	height: 140px;
 }
 .card:hover
 {

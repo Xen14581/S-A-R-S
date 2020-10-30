@@ -1,5 +1,6 @@
 import React from "react";
 import "./SignUp.css";
+import {Link} from 'react-router-dom'
 function SignUp() {
   return (
     <>
@@ -34,7 +35,7 @@ function SignUp() {
         </div>
         <div class="signup__creds">
           <p>Date of Birth:</p>
-          <input type="date" placeholder="Date of Birth" name="" value="" />
+          <input type="date" name="" value="" />
         </div>
         <div class="signup__creds">
           <p>Gender:</p>
@@ -46,9 +47,11 @@ function SignUp() {
             <input type="radio" name="gender" value="other" /> Other
           </form>
         </div>
+       <Link to="/login">
         <div class="signup__button">
-          <a href="#">Sign Up</a>
+          <button>Sign Up</button>
         </div>
+        </Link>
       </div>
     </>
   );
