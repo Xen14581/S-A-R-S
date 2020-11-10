@@ -2,6 +2,8 @@ package com.example.restdemo;
 
 import javax.persistence.*;
 
+import org.springframework.http.ResponseEntity;
+
 @Entity
 @Table(name = "mp_user")
 public class User{
@@ -15,6 +17,9 @@ public class User{
 
     @Column(name = "last_name")
     String last_name;
+    
+    @Column(name="gender")
+    String gender;
 
     @Column(name = "dob")
     String dob;
@@ -30,6 +35,21 @@ public class User{
 
     @Column(name = "role")
     String role;
+    public User(){
+        
+    }
+        public User( String first_name,String last_name,String gender, String dob, String email,
+             String ph_no, String password, String role) {
+        super();     
+                this.first_name=first_name;
+                this.last_name=last_name;
+                this.gender=gender;
+                this.dob = dob;
+                this.email=email;
+                this.ph_no=ph_no;
+                this.password=password;
+                this.role=role;    
+     }
 
     public Integer getId() {
         return id;
@@ -55,6 +75,14 @@ public class User{
         this.last_name = last_name;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+   
     public String getDob() {
         return dob;
     }
@@ -94,14 +122,6 @@ public class User{
     public void setRole(String role) {
         this.role = role;
     }
-
-    // @OneToOne@MapsId
-    // private Doctor doctor;
-    // @OneToOne@MapsId
-    // private Patient patient;
-    // // @OneToMany(mappedBy = "mp_user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // private Shifts shift;
-    // @OneToOne(mappedBy = "Appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // private Appointment appointment;
+    // create a function to connect to jdbc using the u1 object
 
 }
