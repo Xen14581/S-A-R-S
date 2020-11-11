@@ -6,14 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
 @CrossOrigin
-public class Controller{
+public class Controller {
 
     @Autowired
     FetchUsers fetchUser;
+    @Autowired
+    SaveUser saveUser;
     @Autowired
     FetchDoctors fetchDoctor;
     @Autowired
@@ -28,14 +31,15 @@ public class Controller{
     FetchShifts fetchShifts;
 
     @GetMapping(path = "getUsers")
-    List<User> getUsers(){
+    Iterable<User> getUsers() {
         return fetchUser.findAll();
     }
+
     @PostMapping(path = "addUser")
-    public String addUser (@RequestBody User u){
-                                            fetchUser.save(u);
-                                            return "Saved";
-                                         }
+    public User addUser (@RequestBody User u){
+        User userResponse = (User) saveUser.saveUser(u);
+        return userResponse;
+    }
 
     @GetMapping(path = "getDoctors")
     List<Doctor> getDoctor(){
@@ -43,7 +47,7 @@ public class Controller{
     }
     @PostMapping(path = "addDoctor")
     public String addDoctor (@RequestBody Doctor d){
-                                            fetchDoctor.save(d);
+                                            d = fetchDoctor.save(d);
                                             return "Saved";
                                          }
 
@@ -53,7 +57,7 @@ public class Controller{
     }
     @PostMapping(path = "addPatient")
     public String addPatient (@RequestBody Patient p){
-                                                fetchPatient.save(p);
+                                                p = fetchPatient.save(p);
                                                 return "Saved";
                                             }
 
@@ -63,7 +67,7 @@ public class Controller{
     }
     @PostMapping(path = "addAppointments")
     public String addAppointment (@RequestBody Appointment a){
-                                            fetchAppointments.save(a);
+                                            a = fetchAppointments.save(a);
                                             return "Saved";
                                         }
 
@@ -73,7 +77,7 @@ public class Controller{
     }
     @PostMapping(path = "addMedications")
     public String addMedication (@RequestBody Medications m){
-                                                fetchMedications.save(m);
+                                                m = fetchMedications.save(m);
                                                 return "Saved";
                                                }
 
@@ -83,7 +87,7 @@ public class Controller{
     }
     @PostMapping(path = "addNotes")
     public String addNotes (@RequestBody Notes n){
-                                                fetchNotes.save(n);
+                                                n = fetchNotes.save(n);
                                                 return "Saved";
                                                }
 
@@ -93,7 +97,7 @@ public class Controller{
     }
     @PostMapping(path = "addShifts")
     public String addShifts (@RequestBody Shifts s){
-                                                fetchShifts.save(s);
+                                                s = fetchShifts.save(s);
                                                 return "Saved";
                                                }
 }

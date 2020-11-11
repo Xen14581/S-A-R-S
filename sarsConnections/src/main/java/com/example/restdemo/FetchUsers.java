@@ -10,4 +10,5 @@ public interface FetchUsers extends CrudRepository<User,Integer> {
 
     @Override
     List<User> findAll();
+
 }

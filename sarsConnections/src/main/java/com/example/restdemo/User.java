@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "mp_user")
 public class User{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Integer id;
 
@@ -127,14 +127,5 @@ public class User{
     public void setRole(String role) {
         this.role = role;
     }
-
-    // @OneToOne@MapsId
-    // private Doctor doctor;
-    // @OneToOne@MapsId
-    // private Patient patient;
-    // // @OneToMany(mappedBy = "mp_user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // private Shifts shift;
-    // @OneToOne(mappedBy = "Appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // private Appointment appointment;
 
 }
