@@ -1,0 +1,27 @@
+.dochome {
+  background-image: url("https://cdn-5eb3e250f911c8131804d584.closte.com/wp-content/uploads/2020/05/hero-background.jpg");
+   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+}
+.dochome__slideshow
+{
+  width: 70%;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("https://iguana-idm.com/wp-content/uploads/Medical-Records-Scanning-Outsourcing-Tips-iGuana.jpg");
+  background-size: 100% 100%;
+  box-shadow: 10px 25px 40px rgba(0, 0, 0, 0.5);
+  animation: doct 15s infinite ;
+}
+@keyframes doct 
+{
+  25%{background-image: url("https://www.insidehighered.com/sites/default/server_files/media/iStock-1153684245.jpg"); background-size: 100% 100%;  }
+  50%{ background-image: url("https://previews.123rf.com/images/kurhan/kurhan1510/kurhan151001464/46778366-group-of-hospital-doctors-health-care-banner-background-.jpg"); background-size: 100% 100% }
+  75%{ background-image: url("https://www.e-spincorp.com/wp-content/uploads/2017/11/healthcare1-b383d17995.jpg"); background-size: 100% 100% }
+
+}

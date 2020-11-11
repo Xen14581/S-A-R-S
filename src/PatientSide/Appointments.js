@@ -7,7 +7,7 @@ import './Appointments.css';
 import Specialization from './Specialization'
 function Appointments() {
     
-    const [sectors,setSectors]=useState(Specialization)
+    const [sectors]=useState(Specialization)
     const [search ,setSearch]=useState("");
     const [filteredSectors,SetFilteredSectors]=useState([])    
 
