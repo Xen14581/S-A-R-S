@@ -19,6 +19,17 @@ public class Shifts {
     @Column(name = "shift_end")
     String shift_end;
 
+    public Shifts(){
+    }
+    
+    public Shifts(Integer d_id, String day, String shift_start, String shift_end){
+        super();
+        this.d_id = d_id;
+        this.day = day;
+        this.shift_start = shift_start;
+        this.shift_end = shift_end;
+    }
+
     public Integer getD_id() {
         return this.d_id;
     }

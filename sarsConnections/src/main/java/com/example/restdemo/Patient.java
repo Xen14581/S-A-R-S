@@ -22,6 +22,20 @@ public class Patient {
     @Column(name = "ph_no")
     String ph_no;
 
+    // @OneToOne
+    // private User user;
+
+    public Patient(){
+    }
+
+    public Patient(Integer id, String first_name, String last_name, String dob, String ph_no){
+        super();
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.ph_no = ph_no;
+    }    
+
     public Integer getId() {
         return this.id;
     }

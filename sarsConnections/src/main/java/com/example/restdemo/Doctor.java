@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Doctor {
     
     @Id
-    @Column(name = "id")
     Integer id;
     
     @Column(name = "first_name")
@@ -21,6 +20,21 @@ public class Doctor {
 
     @Column(name = "specialty")
     String specialty;
+
+    // @OneToOne
+    // private User user;
+
+    public Doctor(){
+    }
+
+    public Doctor(Integer id, String first_name, String last_name, String ph_no, String specialty){
+        super();
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.ph_no = ph_no;
+        this.specialty = specialty;
+    }
 
     public Integer getId() {
         return this.id;

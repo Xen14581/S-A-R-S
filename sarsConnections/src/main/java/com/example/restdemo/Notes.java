@@ -13,6 +13,18 @@ public class Notes {
     @Column(name = "note")
     String note;
 
+    // @OneToOne
+    // private Appointment appointment;
+
+    public Notes(){
+    }
+
+    public Notes(Integer a_id, String note){
+        super();
+        this.a_id = a_id;
+        this.note = note;
+    }
+
     public Integer getA_id() {
         return this.a_id;
     }

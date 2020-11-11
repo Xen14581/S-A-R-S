@@ -1,5 +1,8 @@
 package com.example.restdemo;
 
+// import java.util.ArrayList;
+// import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +22,23 @@ public class Appointment {
 
     @Column(name = "p_id")
     Integer p_id;
+
+    // @OneToOne(mappedBy = "appointment")
+    // private Notes notes;
+
+    // @OneToMany(mappedBy = "appointment")
+    // private List<Medications> medications = new ArrayList<>();
+
+
+    public Appointment(){
+    }
+
+    public Appointment(String a_datetime, Integer d_id, Integer p_id){
+        super();
+        this.a_datetime = a_datetime;
+        this.d_id = d_id;
+        this.p_id = p_id;
+    }
 
     public Integer getA_id() {
         return this.a_id;

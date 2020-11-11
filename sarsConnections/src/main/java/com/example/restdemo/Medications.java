@@ -9,7 +9,7 @@ public class Medications {
     @Id
     @Column(name = "a_id")
     Integer a_id;
-
+    
     @Column(name = "med_name")
     String med_name;
 
@@ -19,13 +19,18 @@ public class Medications {
     @Column(name = "med_dosage")
     String med_dosage;
 
+    // @ManyToOne()
+    // @Id @JoinColumn(name = "a_id")
+    // private Appointment appointment;
 
-    public Integer getA_id() {
-        return this.a_id;
+    public Medications(){
     }
 
-    public void setA_id(Integer a_id) {
-        this.a_id = a_id;
+    public Medications(String med_name, String med_str, String med_dosage){
+        super();
+        this.med_name = med_name;
+        this.med_str = med_str;
+        this.med_dosage = med_dosage;
     }
 
     public String getMed_name() {
