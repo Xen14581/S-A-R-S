@@ -1,12 +1,12 @@
 import React,{useState,UseEffect} from 'react'
 import "./Doctors.css"
 import Tabs from './Tabs'
-import  Doc  from './Doc';
+import  Doc from './Doc.json' ;
 import { useEffect } from 'react';
 
 function Doctors() {
     const [search,setSearch]=useState("")
-    const [doclist,Setdoclist]=useState(Doc)
+    const [doclist]=useState(Doc)
     const [filteredList,setFilteredList]=useState([])
 
     useEffect(() => {

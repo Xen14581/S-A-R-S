@@ -1,6 +1,4 @@
-import photo from './2.jpg'
-
-const Doc= [
+[
     {   "name" :"vedant tamgadge",
         "image":"https://www.journalnetwork.org/assets/default-profile-54364fb08cf8b2a24e80ed8969012690.jpg",
         "spec" : "Dentist",
@@ -35,7 +33,5 @@ const Doc= [
         "image":"https://www.journalnetwork.org/assets/default-profile-54364fb08cf8b2a24e80ed8969012690.jpg",
         "spec" : "Dentist",
         "exp":"12+",
-        "fees":450    },
+        "fees":450    }
 ]
-
-export default Doc;

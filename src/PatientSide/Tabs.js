@@ -14,6 +14,7 @@ function Tabs() {
    <Link to="/appointments"> <a className="options__anchors" href="">Appointments</a></Link>
     <Link to='/notes'><a className="options__anchors" href="#">Notes by Doctor</a></Link>
     <Link><a className="options__anchors" href="#">History</a></Link>
+    <button className="options__anchors">Logout</button>
 
   </div>
   </div>

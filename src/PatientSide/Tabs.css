@@ -1,0 +1,51 @@
+.home__headerLogo > a {
+  padding-top: 10px;
+  padding-left: 10px;
+  float: left;
+  font-size: 50px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.home__headerOptions {
+  margin-top: 10px;
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.home__headerOptions > a {
+  margin-right: 30px;
+}
+
+.home__headerOptions > Link > a,.home__headerOptions>button {
+text-decoration: none;
+  margin-right: 30px;
+  text-emphasis: none;
+}
+.home__headerOptions>button{
+  margin-top:-5.5px;
+  text-decoration: none;
+  margin-right: 30px;
+  padding-top:-4px;
+  padding-bottom: -4px;
+  text-emphasis: none;
+}
+.home__headerOptions>button:focus{
+  outline:none;
+}
+.options__anchors {
+  font-size: 17px;
+  border: 1px solid white;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+  padding: 5px 40px;
+  padding-bottom: 5px;
+  background: none;
+}
+
+.options__anchors:hover {
+  background-color: white;
+  color: black;
+}
