@@ -46,58 +46,58 @@ public class Controller {
         return fetchDoctor.findAll();
     }
     @PostMapping(path = "addDoctor")
-    public String addDoctor (@RequestBody Doctor d){
-                                            d = fetchDoctor.save(d);
-                                            return "Saved";
-                                         }
+    public Doctor addDoctor (@RequestBody Doctor d){
+        Doctor doctorResponse = (Doctor) fetchDoctor.save(d);
+        return doctorResponse;
+    }
 
     @GetMapping(path = "getPatients")
     List<Patient> getPatient(){
         return fetchPatient.findAll();
     }
     @PostMapping(path = "addPatient")
-    public String addPatient (@RequestBody Patient p){
-                                                p = fetchPatient.save(p);
-                                                return "Saved";
-                                            }
+    public Patient addPatient (@RequestBody Patient p){
+        Patient patientResponse = (Patient) fetchPatient.save(p);
+        return patientResponse;
+    }
 
     @GetMapping(path = "getAppointments")
     List<Appointment> getAppointments(){
         return fetchAppointments.findAll();
     }
     @PostMapping(path = "addAppointments")
-    public String addAppointment (@RequestBody Appointment a){
-                                            a = fetchAppointments.save(a);
-                                            return "Saved";
-                                        }
+    public Appointment addAppointment (@RequestBody Appointment a){
+        Appointment appointmentResponse = (Appointment) fetchAppointments.save(a);
+        return appointmentResponse;
+    }
 
     @GetMapping(path = "getMedications")
     List<Medications> getMedications(){
         return fetchMedications.findAll();
     }
     @PostMapping(path = "addMedications")
-    public String addMedication (@RequestBody Medications m){
-                                                m = fetchMedications.save(m);
-                                                return "Saved";
-                                               }
+    public Medications addMedication (@RequestBody Medications m){
+        Medications medicationResponse = (Medications) fetchMedications.save(m);
+        return medicationResponse;
+    }
 
     @GetMapping(path = "getNotes")
     List<Notes> getNotes(){
         return fetchNotes.findAll();
     }
     @PostMapping(path = "addNotes")
-    public String addNotes (@RequestBody Notes n){
-                                                n = fetchNotes.save(n);
-                                                return "Saved";
-                                               }
+    public Notes addNotes (@RequestBody Notes n){
+        Notes noteResponse = (Notes) fetchNotes.save(n);
+        return noteResponse;
+    }
 
     @GetMapping(path = "getShifts")
     List<Shifts> getShifts(){
         return fetchShifts.findAll();
     }
     @PostMapping(path = "addShifts")
-    public String addShifts (@RequestBody Shifts s){
-                                                s = fetchShifts.save(s);
-                                                return "Saved";
-                                               }
+    public Shifts addShifts (@RequestBody Shifts s){
+        Shifts shiftResponse = (Shifts) fetchShifts.save(s);
+        return shiftResponse;
+    }
 }
