@@ -34,6 +34,9 @@ public class User{
     @Column(name = "role")
     String role;
 
+    @Column(name = "jwt")
+    String jwt;
+
     // @OneToOne(fetch = FetchType.LAZY, mappedBy="user")
     // private Doctor doctor;
 
@@ -44,7 +47,7 @@ public class User{
     }
 
     public User(String first_name,String last_name,String gender, String dob,
-                String email, String ph_no, String password, String role) {
+                String email, String ph_no, String password, String role, String jwt) {
         super();     
         this.first_name=first_name;
         this.last_name=last_name;
@@ -53,7 +56,8 @@ public class User{
         this.email=email;
         this.ph_no=ph_no;
         this.password=password;
-        this.role=role;    
+        this.role=role;
+        this.jwt=jwt;  
     }
 
     public Integer getId() {
@@ -127,5 +131,14 @@ public class User{
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getJwt() {
+        return this.jwt;
+    }
+
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
+    }
+
 
 }
