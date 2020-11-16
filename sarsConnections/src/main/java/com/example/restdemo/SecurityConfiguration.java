@@ -46,12 +46,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
-    // @Override
-    // protected void configure(HttpSecurity http) throws Exception {
-    //     http.authorizeRequests()
-    //             .antMatchers("getDoctors").hasRole("d")
-    //             .antMatchers("getPatients").hasRole("p")
-    //             .antMatchers("getUsers").hasAnyRole("d", "p")
-    //             .and().formLogin();
-    // }
 }

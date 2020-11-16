@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -131,13 +130,22 @@ public class Controller {
 		}
 
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-
-        final String jwt = jwtTokenUtil.generateToken(userDetails);
+        final MyUserDetails myUserDetails = (MyUserDetails) userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         
-        
+        User user = fetchUser.findByEmail(myUserDetails.getUsername()).get();
 
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        if (user.getJwt() != null){
+
+            return ResponseEntity.ok(new AuthenticationResponse(user.getJwt()));
+
+        } else {
+
+            final String jwt = jwtTokenUtil.generateToken(myUserDetails);
+        
+            user.setJwt(jwt);
+
+            return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        }
 	}
 
 }
