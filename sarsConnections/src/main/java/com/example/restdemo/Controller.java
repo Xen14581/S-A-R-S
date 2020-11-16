@@ -141,8 +141,9 @@ public class Controller {
         } else {
 
             final String jwt = jwtTokenUtil.generateToken(myUserDetails);
-        
+            
             user.setJwt(jwt);
+            fetchUser.save(user);
 
             return ResponseEntity.ok(new AuthenticationResponse(jwt));
         }

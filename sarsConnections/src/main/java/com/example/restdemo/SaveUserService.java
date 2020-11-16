@@ -15,7 +15,5 @@ public class SaveUserService implements SaveUser {
         User userResponse = fetchUsers.save(user);
         return userResponse;
     }
-
-    
     
 }
