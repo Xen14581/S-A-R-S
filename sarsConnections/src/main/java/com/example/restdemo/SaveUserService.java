@@ -9,9 +9,12 @@ public class SaveUserService implements SaveUser {
 
     @Autowired
     private FetchUsers fetchUsers;
+    @Autowired
+    private SecurityConfiguration securityConfiguration;
 
     @Transactional
     public User saveUser(User user){
+        user.setPassword(securityConfiguration.passwordEncoder().encode(user.getPassword()));
         User userResponse = fetchUsers.save(user);
         return userResponse;
     }
