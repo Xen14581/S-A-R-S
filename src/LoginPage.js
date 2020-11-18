@@ -1,14 +1,39 @@
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import "./LoginPage.css";
-import { Link} from "react-router-dom";
+import {useHistory,Redirect,Link} from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import LockIcon from "@material-ui/icons/Lock";
-function LoginPage() {
-   const [email,setEmail]=useState("")
+import {setUserSession} from '../src/Utilities/UserServices';
+import axios from 'axios'
+
+
+function LoginPage({props}) {
+  const [email,setEmail]=useState("")
    const [password,setPassword]=useState('')
-    const login=()=>{
+   const history = useHistory()
+   function login(event) {
+     event.preventDefault()
+     const data = {
+        'username':email,
+        'password':password
+     }
+    axios.post("http://localhost:8080/authenticate",data)
+    .then(res=>{
+        setUserSession(res.data.jwt,res.data.user);
+        if(res.data.user.role == "p"){
+            history.push("/home")
+        }
+        else if(res.data.user.role == "d"){
+          history.push('/dochome')
+        }
         
-    }
+    })
+    .catch(er=>{
+      alert("The given Email or Password is incorrect")
+    })
+
+    
+  }
    return (
    
     <>
@@ -24,11 +49,10 @@ function LoginPage() {
             <LockIcon />
             <input type="password" placeholder="Password" onChange={e=>setPassword(e.target.value)} />
           </div>
-          <Link to="/home">
-          <div className="login__button">
+                  <div className="login__button">
             <button onClick={login}>Login</button>
         </div>
-        </Link>
+        
           <p>Or</p>
           <Link to="/signup">
           <div className="login__button">

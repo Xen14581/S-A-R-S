@@ -1,10 +1,12 @@
 import {Link} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search'
-
+import {useHistory} from 'react-router-dom'
 import Tabs from './Tabs'
 import React,{useEffect,useState} from 'react'
 import './Appointments.css';
 import Specialization from './Specialization'
+import {Authenticated} from '../Utilities/UserServices'
+
 function Appointments() {
     
     const [sectors]=useState(Specialization)
@@ -41,8 +43,8 @@ function Appointments() {
     }
     
     
-    return (
-        <div className="appointments">
+    return (  
+            <div className="appointments">
             
                 <Tabs/> 
             

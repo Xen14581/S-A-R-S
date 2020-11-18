@@ -2,15 +2,14 @@ import React,{useState,UseEffect} from 'react'
 import axios from "axios";
 import "./SignUp.css";
 import {Link} from 'react-router-dom'
-function SignUp() {
+function SignUp(){
   const [firstName,setFirstName]=useState("")
   const [lastName,setLastName]=useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
   const [password,setPassword]=useState("");
   const[dob,setDob]=useState("")
-  const[gender,setGender]=useState("m")
+  const[gender,setGender]=useState("")
   const[email,setEmail]= useState("")
-   
   const signup=()=>{
     const data = {
       'first_name':firstName,  
@@ -22,41 +21,19 @@ function SignUp() {
       'ph_no':phoneNumber,
       'role':'p'         
     }
+    const patient ={
+      'first_name':firstName,  
+      'last_name':lastName,
+      'dob' : dob,
+      'ph_no':phoneNumber 
+    } 
     axios.post('http://localhost:8080/addUser',data)
-    .then(console.log(data))
+    axios.post('http://localhost:8080/addPatients',patient)
   }
-//  { 
-//     try{
-//         let result = await fetch('http://localhost:8080/getUsers',{
-//           method:'post',
-//           mode:'no-cors',
-//           headers:{
-//             'Accept':'application/json',
-//             'Content-type':'application/json',
-
-//           },
-//           body:JSON.stringify({
-//            dob:{dob},
-//         email:{email},
-//         first_name:{firstName},
-//         gender:{gender},
-//         last_name:{lastName},
-//         phone_no:{phoneNumber},
-//         password:{password}
- 
-//           })
-//         });
-//         console.log(result)
-//     }catch(e){
-//       alert(e)
-//     }
-  // }
-
   return (
     <>
       <div className="signup__background"></div>
       <div className="signup">
-        <form onSubmit={signup}>
         <h1>Create Account</h1>
 
         <div className="signup__creds">
@@ -81,16 +58,17 @@ function SignUp() {
         <div className="signup__creds">
           <p>Gender:</p>
 
-            <input type="radio" onClick={e=>setGender(e.target.value)} value="m" /> Male
+            <input name="gender" id="1" type="radio" value="m"  onClick={e=>setGender(e.target.value)} /> Male
             <br />
-            <input type="radio" onClick={e=>setGender(e.target.value)} value="f" /> Female
+            <input name="gender" id="2" type="radio" value="f"  onClick={e=>setGender(e.target.value)} /> Female
             <br />
-            <input type="radio" onClick={e=>setGender(e.target.value)} value="o" /> Other
+            <input name="gender" id="3" type="radio" value="o"  onClick={e=>setGender(e.target.value)} /> Other
         </div>
-        <div className="signup__button">
-          <button onClick={signup} >Sign Up</button>
+        <Link to="login">
+            <div className="signup__button">
+          <button onClick={signup}>Sign Up</button>
         </div>
-      </form>
+        </Link>
       </div>
     </>
   );
