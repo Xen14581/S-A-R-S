@@ -1,4 +1,4 @@
-export let Authenticated = false;
+
 
 
 export const getUser = () => {
@@ -14,11 +14,9 @@ export const getToken = () => {
 export const removeUserSession = () => {
   sessionStorage.removeItem('token');
   sessionStorage.removeItem('user');
-  Authenticated = false;
 
 }
 export const setUserSession = (jwt, user) => {
   sessionStorage.setItem('token', jwt);
-  sessionStorage.setItem('user', JSON.stringify(user));
-  Authenticated = true;
+  sessionStorage.setItem('user', JSON.stringify(user))
 }

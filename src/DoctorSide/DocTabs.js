@@ -1,7 +1,13 @@
 import React from 'react'
 import './DocTabs.css'
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
+import {removeUserSession} from '../Utilities/UserServices'
 function DocTabs() {
+  const history = useHistory()
+  const logout=()=>{
+    removeUserSession();
+    history.push('/login')
+  }
     return (
             <div className="doctabs">
               <div className="home__header">
@@ -13,7 +19,7 @@ function DocTabs() {
    <Link> <a className="options__anchors" href="#">Profile</a></Link>
    <Link > <a className="options__anchors" href="">Appointments Details</a></Link>
     <Link><a className="options__anchors" href="#">Appointments History</a></Link>
-
+       <button onClick={logout} className="options__anchors">Logout</button>
   </div>
   </div>
         </div>

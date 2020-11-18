@@ -1,14 +1,14 @@
 import React,{useState} from "react";
 import "./LoginPage.css";
-import {useHistory,Redirect,Link} from "react-router-dom";
+import {useHistory,Link} from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import LockIcon from "@material-ui/icons/Lock";
 import {setUserSession} from '../src/Utilities/UserServices';
 import axios from 'axios'
 
 
-function LoginPage({props}) {
-  const [email,setEmail]=useState("")
+function LoginPage() {
+  const [email,setEmail]=useState('')
    const [password,setPassword]=useState('')
    const history = useHistory()
    function login(event) {
@@ -20,10 +20,10 @@ function LoginPage({props}) {
     axios.post("http://localhost:8080/authenticate",data)
     .then(res=>{
         setUserSession(res.data.jwt,res.data.user);
-        if(res.data.user.role == "p"){
+        if(res.data.user.role === "p"){
             history.push("/home")
         }
-        else if(res.data.user.role == "d"){
+        else if(res.data.user.role === "d"){
           history.push('/dochome')
         }
         
