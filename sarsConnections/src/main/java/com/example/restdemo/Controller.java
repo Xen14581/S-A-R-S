@@ -136,7 +136,7 @@ public class Controller {
 
         if (user.getJwt() != null){
 
-            return ResponseEntity.ok(new AuthenticationResponse(user.getJwt()));
+            return ResponseEntity.ok(new AuthenticationResponse(user, user.getJwt()));
 
         } else {
 
@@ -145,7 +145,7 @@ public class Controller {
             user.setJwt(jwt);
             fetchUser.save(user);
 
-            return ResponseEntity.ok(new AuthenticationResponse(jwt));
+            return ResponseEntity.ok(new AuthenticationResponse(user, user.getJwt()));
         }
 	}
 
