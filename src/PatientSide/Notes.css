@@ -56,3 +56,32 @@ flex-direction: column;
 .note__content{
     margin-left:15px;
 }
+.post_notes{
+    display:flex;
+    justify-content: center;
+    float:bottom;
+}
+
+.post_notes>input{
+   border: none;
+   margin-top:10px;
+  margin-bottom: 10px;
+  height: 20px;
+  /* margin-left: 120px; */
+  width: 600px;
+  background-color: #fff;
+  border-radius: 10px;   
+  position:sticky;  
+}
+.post_notes>input:focus{
+    outline:none;
+}
+
+.post_notes>button{
+    border:none;
+    margin-top:11px;
+    background-color: #fff;
+    width:50px;
+    height:20px;
+    border-radius:10pc;
+}

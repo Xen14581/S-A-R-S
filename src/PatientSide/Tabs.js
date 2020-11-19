@@ -21,7 +21,7 @@ function Tabs() {
  </Link>
  <div className="home__headerOptions">
 
-   <Link> <a className="options__anchors" >Profile</a></Link>
+   <Link to="/profile"> <a className="options__anchors" >Profile</a></Link>
    <Link to="/appointments"> <a className="options__anchors">Appointments</a></Link>
     <Link to='/notes'><a className="options__anchors" >Notes by Doctor</a></Link>
     <Link><a className="options__anchors">History</a></Link>

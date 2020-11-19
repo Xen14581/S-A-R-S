@@ -10,6 +10,7 @@ import SignUp from "./SignUp";
 import Home from '../src/PatientSide/Home';
 import Notes from '../src/PatientSide/Notes';
 import PrivateRoute from '../src/Utilities/PrivateRoute';
+import Profile from '../src/PatientSide/Profile'
 function App() {
   return (
      <Router>
@@ -27,6 +28,7 @@ function App() {
         <PrivateRoute path='/appointments' exact component={Appointments}/>
         <PrivateRoute path='/notes' exact component={Notes}/>
           <PrivateRoute path='/doctors' exact component={Doctors}/>
+          <PrivateRoute path="/profile" exact component ={Profile}/>
         </Switch>
         <Switch>
           <PrivateRoute path='/dochome' exact component={DocHome}/>

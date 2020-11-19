@@ -16,7 +16,7 @@ function DocTabs() {
  </Link>
  <div className="home__headerOptions">
 
-   <Link> <a className="options__anchors" href="#">Profile</a></Link>
+   <Link to="/profile"> <a className="options__anchors" href="#">Profile</a></Link>
    <Link > <a className="options__anchors" href="">Appointments Details</a></Link>
     <Link><a className="options__anchors" href="#">Appointments History</a></Link>
        <button onClick={logout} className="options__anchors">Logout</button>

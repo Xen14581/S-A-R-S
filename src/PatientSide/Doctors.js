@@ -1,8 +1,7 @@
-import React,{useState,UseEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import "./Doctors.css"
 import Tabs from './Tabs'
 import  Doc from './Doc.json' ;
-import { useEffect } from 'react';
 
 function Doctors() {
     const [search,setSearch]=useState("")
