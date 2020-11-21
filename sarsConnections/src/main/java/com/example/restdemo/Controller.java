@@ -1,6 +1,7 @@
 package com.example.restdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -26,15 +27,27 @@ public class Controller {
     @Autowired
     FetchDoctors fetchDoctor;
     @Autowired
+    SaveDoctor saveDoctor;
+    @Autowired
     FetchPatients fetchPatient;
+    @Autowired
+    SavePatient savePatient;
     @Autowired
     FetchAppointments fetchAppointments;
     @Autowired
+    SaveAppointment saveAppointment;
+    @Autowired
     FetchMedications fetchMedications;
+    @Autowired
+    SaveMedications saveMedications;
     @Autowired
     FetchNotes fetchNotes;
     @Autowired
+    SaveNote saveNote;
+    @Autowired
     FetchShifts fetchShifts;
+    @Autowired
+    SaveShifts saveShifts;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -53,6 +66,11 @@ public class Controller {
         return ResponseEntity.ok(fetchUser.findAll());
     }
 
+    @PostMapping(path = "getCurrentUser")
+    public ResponseEntity<?> getCurrentUser(@RequestBody CurrentUserRequest currentUser){
+        return ResponseEntity.ok(fetchUser.findByEmail(currentUser.getEmail()).get());
+    }
+
     @PostMapping(path = "addUser")
     public User addUser(@RequestBody User u) {
         User userResponse = (User) saveUser.saveUser(u);
@@ -66,7 +84,7 @@ public class Controller {
 
     @PostMapping(path = "addDoctor")
     public Doctor addDoctor(@RequestBody Doctor d) {
-        Doctor doctorResponse = (Doctor) fetchDoctor.save(d);
+        Doctor doctorResponse = (Doctor) saveDoctor.saveDoctor(d);
         return doctorResponse;
     }
 
@@ -77,7 +95,7 @@ public class Controller {
 
     @PostMapping(path = "addPatient")
     public Patient addPatient(@RequestBody Patient p) {
-        Patient patientResponse = (Patient) fetchPatient.save(p);
+        Patient patientResponse = (Patient) savePatient.savePatient(p);
         return patientResponse;
     }
 
@@ -88,7 +106,7 @@ public class Controller {
 
     @PostMapping(path = "addAppointments")
     public Appointment addAppointment(@RequestBody Appointment a) {
-        Appointment appointmentResponse = (Appointment) fetchAppointments.save(a);
+        Appointment appointmentResponse = (Appointment) saveAppointment.saveAppointment(a);
         return appointmentResponse;
     }
 
@@ -99,7 +117,7 @@ public class Controller {
 
     @PostMapping(path = "addMedications")
     public Medications addMedication(@RequestBody Medications m) {
-        Medications medicationResponse = (Medications) fetchMedications.save(m);
+        Medications medicationResponse = (Medications) saveMedications.saveMedications(m);
         return medicationResponse;
     }
 
@@ -110,7 +128,7 @@ public class Controller {
 
     @PostMapping(path = "addNotes")
     public Notes addNotes(@RequestBody Notes n) {
-        Notes noteResponse = (Notes) fetchNotes.save(n);
+        Notes noteResponse = (Notes) saveNote.saveNote(n);
         return noteResponse;
     }
 
@@ -121,7 +139,7 @@ public class Controller {
 
     @PostMapping(path = "addShifts")
     public Shifts addShifts(@RequestBody Shifts s) {
-        Shifts shiftResponse = (Shifts) fetchShifts.save(s);
+        Shifts shiftResponse = (Shifts) saveShifts.saveShifts(s);
         return shiftResponse;
     }
 
@@ -156,12 +174,15 @@ public class Controller {
         }
     }
 
-    @PutMapping("getDoctor/{id}")
-    public ResponseEntity<Optional<Doctor>> Doctordetails(@PathVariable(value = "id") Integer id) {
+    // @PutMapping(path = "getDoctor/{id}",
+    //             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+    //             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 
-        Optional<Doctor> doctor = fetchDoctor.findById(id);
-        return ResponseEntity.ok(doctor);
+    // public ResponseEntity<Optional<Doctor>> Doctordetails(@PathVariable(value = "id") Integer id) {
 
-    }
+    //     Optional<Doctor> doctor = fetchDoctor.findById(id);
+    //     return ResponseEntity.ok(doctor);
+
+    // }
 
 }
