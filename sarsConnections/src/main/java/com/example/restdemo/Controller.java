@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -50,8 +49,8 @@ public class Controller {
     }
 
     @GetMapping(path = "getUsers")
-    Iterable<User> getUsers() {
-        return fetchUser.findAll();
+    ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok(fetchUser.findAll());
     }
 
     @PostMapping(path = "addUser")
@@ -61,8 +60,8 @@ public class Controller {
     }
 
     @GetMapping(path = "getDoctors")
-    List<Doctor> getDoctor() {
-        return fetchDoctor.findAll();
+    ResponseEntity<?> getDoctor() {
+        return ResponseEntity.ok(fetchDoctor.findAll());
     }
 
     @PostMapping(path = "addDoctor")
@@ -72,8 +71,8 @@ public class Controller {
     }
 
     @GetMapping(path = "getPatients")
-    List<Patient> getPatient() {
-        return fetchPatient.findAll();
+    ResponseEntity<?> getPatient() {
+        return ResponseEntity.ok(fetchPatient.findAll());
     }
 
     @PostMapping(path = "addPatient")
@@ -83,8 +82,8 @@ public class Controller {
     }
 
     @GetMapping(path = "getAppointments")
-    List<Appointment> getAppointments() {
-        return fetchAppointments.findAll();
+    ResponseEntity<?> getAppointments() {
+        return ResponseEntity.ok(fetchAppointments.findAll());
     }
 
     @PostMapping(path = "addAppointments")
@@ -94,8 +93,8 @@ public class Controller {
     }
 
     @GetMapping(path = "getMedications")
-    List<Medications> getMedications() {
-        return fetchMedications.findAll();
+    ResponseEntity<?> getMedications() {
+        return ResponseEntity.ok(fetchMedications.findAll());
     }
 
     @PostMapping(path = "addMedications")
@@ -105,8 +104,8 @@ public class Controller {
     }
 
     @GetMapping(path = "getNotes")
-    List<Notes> getNotes() {
-        return fetchNotes.findAll();
+    ResponseEntity<?> getNotes() {
+        return ResponseEntity.ok(fetchNotes.findAll());
     }
 
     @PostMapping(path = "addNotes")
@@ -116,8 +115,8 @@ public class Controller {
     }
 
     @GetMapping(path = "getShifts")
-    List<Shifts> getShifts() {
-        return fetchShifts.findAll();
+    ResponseEntity<?> getShifts() {
+        return ResponseEntity.ok(fetchShifts.findAll());
     }
 
     @PostMapping(path = "addShifts")
