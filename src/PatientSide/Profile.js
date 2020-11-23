@@ -1,9 +1,10 @@
-
-import React,{useState} from 'react'
+    import React,{useState} from 'react'
 import Tabs from './Tabs'
 import axios from 'axios'
 import './Profile.css'
 import {getUser} from '../Utilities/UserServices'
+import DocTabs from '../DoctorSide/DocTabs'
+import AdminTabs from '../AdminSide/AdminTabs'
 function Profile() {
     const [oldPassword,setOldPassword] = useState("")
     const [newPassword,setNewPassword] = useState("")
@@ -27,7 +28,10 @@ function Profile() {
     return (
         
         <div className = "profile">
-            <Tabs/>
+            {user.role==="p"?(
+                <Tabs/>
+            ):(user.role==="a"?(
+            <AdminTabs/>):(<DocTabs/>))}
             <div className="profile__creds">
             <div className="profile__dp">
             <img src ="https://www.journalnetwork.org/assets/default-profile-54364fb08cf8b2a24e80ed8969012690.jpg" alt = "profile picture" />
@@ -37,7 +41,7 @@ function Profile() {
             </div>
             <div className="profile__dateOfBirthandPh_no" >
                 <p><strong>Date of Birth:</strong> {user.dob}</p>
-    <p><strong>Phone Number:</strong>+91 {user.ph_no}</p>
+                <p><strong>Phone Number:</strong>+91 {user.ph_no}</p>
             </div>
             <div className="profile__email">
     <p><strong>E-mail:</strong>{user.email}</p>

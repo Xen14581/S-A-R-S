@@ -3,6 +3,7 @@ import axios from "axios";
 import "./SignUp.css";
 import {Link} from 'react-router-dom'
 function SignUp(){
+  const [id,setId] = useState(0)
   const [firstName,setFirstName]=useState("")
   const [lastName,setLastName]=useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
@@ -21,14 +22,24 @@ function SignUp(){
       'ph_no':phoneNumber,
       'role':'p'         
     }
-    const patient ={
-      'first_name':firstName,  
+   const login={
+      'username':email,
+      'password':password
+    }
+    
+    axios.post('http://localhost:8080/addUser',data).then(()=>{
+    axios.post('http://localhost:8080/authenticate',login).then(res=>{
+      setId(res.data.user.id)
+      const patient ={
+        'id':id,
+        'first_name':firstName,  
       'last_name':lastName,
       'dob' : dob,
       'ph_no':phoneNumber 
     } 
-    axios.post('http://localhost:8080/addUser',data)
-    axios.post('http://localhost:8080/addPatients',patient)
+     axios.post('http://localhost:8080/addPatient',patient)
+    })
+  })
   }
   return (
     <>

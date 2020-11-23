@@ -7,7 +7,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={props => (
      session_token != null  ? (
-      < Component  {...props} />
+      < Component  {...props}  />
       ) : (
             <Redirect to={{
               pathname:'/login',

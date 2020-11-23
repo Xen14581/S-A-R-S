@@ -1,4 +1,4 @@
-const Specialization=[
+const Specs=[
     {
         "image":"https://justdental.in/wp-content/uploads/2018/04/dental-4_647_051316081704.jpg",
         "name": "Dentist"
@@ -35,4 +35,4 @@ const Specialization=[
 ]
 
 
-export default Specialization
+export default Specs

@@ -19,12 +19,15 @@ function LoginPage() {
      }
     axios.post("http://localhost:8080/authenticate",data)
     .then(res=>{
-        setUserSession(res.data.jwt,res.data.user);
+        setUserSession(res.data.jwt,res.data.user)  
         if(res.data.user.role === "p"){
             history.push("/home")
         }
         else if(res.data.user.role === "d"){
           history.push('/dochome')
+        }
+        else if (res.data.user.role === "a"){
+          history.push('/adminhome')
         }
         
     })

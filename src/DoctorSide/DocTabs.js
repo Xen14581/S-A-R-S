@@ -1,6 +1,6 @@
 import React from 'react'
 import './DocTabs.css'
-import {Link,useHistory} from 'react-router-dom'
+import {NavLink,useHistory,Link} from 'react-router-dom'
 import {removeUserSession} from '../Utilities/UserServices'
 function DocTabs() {
   const history = useHistory()
@@ -11,12 +11,12 @@ function DocTabs() {
     return (
             <div className="doctabs">
               <div className="home__header">
-         <Link to="/dochome">
+         <NavLink to="/dochome">
          <div className="home__headerLogo" ><a href="#">SA&RS</a></div>
- </Link>
+ </NavLink>
  <div className="home__headerOptions">
 
-   <Link to="/profile"> <a className="options__anchors" href="#">Profile</a></Link>
+   <NavLink to="/profile" activeClassName="selected"> <a className="options__anchors" href="#">Profile</a></NavLink>
    <Link > <a className="options__anchors" href="">Appointments Details</a></Link>
     <Link><a className="options__anchors" href="#">Appointments History</a></Link>
        <button onClick={logout} className="options__anchors">Logout</button>

@@ -1,0 +1,100 @@
+.doctors {
+  background-image: url(https://cutewallpaper.org/21/wallpaper-medical/Best-50+-Medical-Wallpaper-on-HipWallpaper-Medical-.jpg);
+  /* background-color: #1b1f23; */
+  height: 100vh;
+  overflow-y: overlay;
+  overflow-x: overlay;
+}
+
+.doctors__header {
+  /* position: sticky; */
+  top: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: solid white;
+  background-color: #19518a;
+}
+
+.doctors__headerLogo > a {
+  text-decoration: none;
+  padding-left: 10px;
+  float: left;
+  font-size: 50px;
+  text-decoration: none;
+  color: #fff;
+  float: left;
+}
+
+.doctors__headerSearch {
+  margin-top: 110px;
+  display: flex;
+  align-items: center;
+  align-items: center;
+}
+
+.doctors__headerSearch > input {
+  border: none;
+  /* margin-bottom: 10px; */
+  height: 28px;
+  margin-left: 120px;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.doctors__card {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 2px;
+  margin: 40px 16px 16px 16px;
+  max-width: 420px !important;
+  background-color: #fafafa;
+  min-height: 200px;
+  max-height: 200px !important;
+  border-radius: 13px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  align-items: center;
+}
+.doctors__cardImage {
+  margin-left: 10px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.doctors__cardInfo > h4 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.doctors__cardInfo > p {
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+.doctors__cardButton {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid darkgrey;
+  font-size: 15px;
+  background: none;
+  color: black;
+  /* margin: 10px; */
+  margin-left: 15px;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.doctors__cardButton:focus {
+  outline: none;
+}
+.doctors__card:hover {
+  transition: transform 200ms ease-in;
+  transform: scale(1.03) !important;
+}
+
+.doctor__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 70px;
+}

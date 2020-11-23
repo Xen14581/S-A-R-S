@@ -1,16 +1,14 @@
 import React,{useState,useEffect} from 'react'
-import "./Doctors.css"
-import Tabs from './Tabs'
-import axios from 'axios' 
-function Doctors({match}) {
-    const specialization =match.params.specialization 
+import "./DoctorsList.css"
+import AdminTabs from './AdminTabs'
+import axios from 'axios'
+function DoctorsList({match}) {
+    const specialization=match.params.specialization;   
     const [search,setSearch]=useState("")
     const [doclist,setDoclist] = useState([])
     const [filteredList,setFilteredList]=useState([])
     const [specs,setSpecs] = useState([])
-    const auth = `Bearer ${sessionStorage.getItem('token')}` 
-
-
+    const auth = `Bearer ${sessionStorage.getItem('token')}`
 useEffect(async ()=>{
   const data = await axios.get('http://localhost:8080/getDoctors',{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
@@ -27,7 +25,7 @@ useEffect(() => {
         doc.specialty.toLowerCase().includes(specialization.toLowerCase())
       )
     );
-  }, [doclist]);
+  }, [doclist,setSpecs]);
     useEffect(() => {
     setFilteredList(
       specs.filter((docs) =>
@@ -45,9 +43,9 @@ useEffect(() => {
 		                <div class="doctors__cardInfo">
                       <h4> <strong></strong>Dr.{val.first_name} {val.last_name}</h4>
                       <p><strong>Specialization:</strong> {val.specialty}</p>
-                      <p> <strong> Experience(in years):</strong>4</p>
+                      <p> <strong> Experience(in years):</strong>12</p>
                       <p><strong>Fees:</strong> ₹400</p>
-                    	<button class="doctors__cardButton" type="button">Book Appointment</button>
+                    	<button class="doctors__cardButton" type="button">View Appointments</button>
                   	</div>
               </div>
             </div>
@@ -57,7 +55,7 @@ useEffect(() => {
     return(
        
         <div className="doctors">
-                <Tabs/> 
+                <AdminTabs/> 
             
             
                 <div className="appointments__headerSearch">
@@ -76,4 +74,4 @@ useEffect(() => {
     )
 
 }
-export default Doctors
+export default DoctorsList

@@ -18,7 +18,10 @@
 .home__headerOptions > a {
   margin-right: 30px;
 }
-
+.selected>a{
+  background-color: white;
+  color:black;
+}
 .home__headerOptions > Link > a {
 text-decoration: none;
   margin-right: 30px;
