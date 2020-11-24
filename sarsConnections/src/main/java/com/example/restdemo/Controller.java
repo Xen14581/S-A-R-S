@@ -1,7 +1,8 @@
 package com.example.restdemo;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -10,11 +11,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -66,11 +64,6 @@ public class Controller {
         return ResponseEntity.ok(fetchUser.findAll());
     }
 
-    @PostMapping(path = "getCurrentUser")
-    public ResponseEntity<?> getCurrentUser(@RequestBody CurrentUserRequest currentUser){
-        return ResponseEntity.ok(fetchUser.findByEmail(currentUser.getEmail()).get());
-    }
-
     @PostMapping(path = "addUser")
     public User addUser(@RequestBody User u) {
         User userResponse = (User) saveUser.saveUser(u);
@@ -84,7 +77,7 @@ public class Controller {
 
     @PostMapping(path = "addDoctor")
     public Doctor addDoctor(@RequestBody Doctor d) {
-        Doctor doctorResponse = (Doctor) saveDoctor.saveDoctor(d);
+        Doctor doctorResponse =  saveDoctor.saveDoctor(d);
         return doctorResponse;
     }
 
@@ -174,15 +167,34 @@ public class Controller {
         }
     }
 
-    // @PutMapping(path = "getDoctor/{id}",
-    //             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-    //             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(path = "getDoctor/{id}")
+    public ResponseEntity<Optional<Doctor>> Doctordetails(@PathVariable(value = "id") Integer id) {
 
-    // public ResponseEntity<Optional<Doctor>> Doctordetails(@PathVariable(value = "id") Integer id) {
+        Optional<Doctor> doctor = fetchDoctor.findById(id);
+        return ResponseEntity.ok(doctor);
 
-    //     Optional<Doctor> doctor = fetchDoctor.findById(id);
-    //     return ResponseEntity.ok(doctor);
+    }
 
-    // }
+    @GetMapping(path = "getNote/{id}")
+    public ResponseEntity<?> Note(@PathVariable(value = "id") Integer id) {
+        
+        Optional<Notes> note = fetchNotes.findById(id);
+        return ResponseEntity.ok(note);
+    }
+
+    @GetMapping(path = "getAppointment/{id}")
+    public ResponseEntity<?> Appointment(@PathVariable(value = "id") Integer id) {
+        
+        Optional<Appointment> appointment = fetchAppointments.findById(id);
+        return ResponseEntity.ok(appointment);
+    }
+
+    @GetMapping(path = "getPatient/{id}")
+    public ResponseEntity<Optional<Patient>> Patientdetails(@PathVariable(value = "id") Integer id) {
+
+        Optional<Patient> patient = fetchPatient.findById(id);
+        return ResponseEntity.ok(patient);
+
+    }
 
 }

@@ -22,7 +22,7 @@ public class Patient {
     @Column(name = "ph_no")
     String ph_no;
 
-    // @OneToOne
+    // @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
     // private User user;
 
     public Patient(){
@@ -33,6 +33,7 @@ public class Patient {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.dob = dob;
         this.ph_no = ph_no;
     }    
 

@@ -37,10 +37,11 @@ public class User{
     @Column(name = "jwt")
     String jwt;
 
-    // @OneToOne(fetch = FetchType.LAZY, mappedBy="user")
+    // @OneToOne(fetch = FetchType.LAZY, mappedBy="doctor")
     // private Doctor doctor;
 
-    // @OneToOne(fetch = FetchType.LAZY, mappedBy="user")
+    // @OneToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "id")
     // private Patient patient;
 
     public User(){  
