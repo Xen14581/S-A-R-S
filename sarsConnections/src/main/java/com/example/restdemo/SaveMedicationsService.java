@@ -15,5 +15,4 @@ public class SaveMedicationsService implements SaveMedications {
         Medications medicationsResponse = fetchMedications.save(medications);
         return medicationsResponse;
     }
-
 }

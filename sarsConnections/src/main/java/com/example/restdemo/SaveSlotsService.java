@@ -5,15 +5,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class SaveShiftsService implements SaveShifts {
+public class SaveSlotsService implements SaveSlots {
 
     @Autowired
-    private FetchShifts fetchShifts;
+    private FetchSlots fetchSlots;
 
     @Transactional
-    public Shifts saveShifts(Shifts shift){
-        Shifts shiftResponse = fetchShifts.save(shift);
-        return shiftResponse;
+    public Slots saveSlots(Slots slot){
+        Slots slotResponse = fetchSlots.save(slot);
+        return slotResponse;
     }
     
 }

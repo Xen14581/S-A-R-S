@@ -3,6 +3,6 @@ package com.example.restdemo;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface SaveShifts {
-    public Shifts saveShifts(Shifts shifts);
+public interface SaveSlots {
+    public Slots saveSlots(Slots slots);
 }

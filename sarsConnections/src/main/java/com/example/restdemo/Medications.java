@@ -7,6 +7,10 @@ import javax.persistence.*;
 public class Medications {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "med_id")
+    Integer med_id;
+
     @Column(name = "a_id")
     Integer a_id;
     
@@ -26,11 +30,30 @@ public class Medications {
     public Medications(){
     }
 
-    public Medications(String med_name, String med_str, String med_dosage){
+    public Medications(Integer med_id, Integer a_id, String med_name, String med_str, String med_dosage){
         super();
+        this.med_id = med_id;
+        this.a_id = a_id;
         this.med_name = med_name;
         this.med_str = med_str;
         this.med_dosage = med_dosage;
+    }
+
+
+    public Integer getMed_id() {
+        return this.med_id;
+    }
+
+    public void setMed_id(Integer med_id) {
+        this.med_id = med_id;
+    }
+
+    public Integer getA_id() {
+        return this.a_id;
+    }
+
+    public void setA_id(Integer a_id) {
+        this.a_id = a_id;
     }
 
     public String getMed_name() {

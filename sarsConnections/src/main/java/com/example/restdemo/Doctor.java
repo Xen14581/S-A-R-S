@@ -21,19 +21,27 @@ public class Doctor {
     @Column(name = "specialty")
     String specialty;
 
+    @Column(name = "experience")
+    String experience;
+
+    @Column(name = "fees")
+    Integer fees;
+
     // @OneToOne
     // private User user;
 
     public Doctor(){
     }
 
-    public Doctor(Integer id, String first_name, String last_name, String ph_no, String specialty){
+    public Doctor(Integer id, String first_name, String last_name, String ph_no, String specialty, String experience, Integer fees){
         super();
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.ph_no = ph_no;
         this.specialty = specialty;
+        this.experience = experience;
+        this.fees = fees;
     }
 
     public Integer getId() {
@@ -74,6 +82,23 @@ public class Doctor {
 
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
+    }
+
+
+    public String getExperience() {
+        return this.experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public Integer getFees() {
+        return this.fees;
+    }
+
+    public void setFees(Integer fees) {
+        this.fees = fees;
     }
 
 }

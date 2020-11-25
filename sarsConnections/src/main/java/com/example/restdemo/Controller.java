@@ -43,9 +43,9 @@ public class Controller {
     @Autowired
     SaveNote saveNote;
     @Autowired
-    FetchShifts fetchShifts;
+    FetchSlots fetchSlots;
     @Autowired
-    SaveShifts saveShifts;
+    SaveSlots saveSlots;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -125,15 +125,15 @@ public class Controller {
         return noteResponse;
     }
 
-    @GetMapping(path = "getShifts")
-    ResponseEntity<?> getShifts() {
-        return ResponseEntity.ok(fetchShifts.findAll());
+    @GetMapping(path = "getSlots")
+    ResponseEntity<?> getSlots() {
+        return ResponseEntity.ok(fetchSlots.findAll());
     }
 
-    @PostMapping(path = "addShifts")
-    public Shifts addShifts(@RequestBody Shifts s) {
-        Shifts shiftResponse = (Shifts) saveShifts.saveShifts(s);
-        return shiftResponse;
+    @PostMapping(path = "addSlots")
+    public Slots addSlots(@RequestBody Slots s) {
+        Slots slotResponse = (Slots) saveSlots.saveSlots(s);
+        return slotResponse;
     }
 
     @PostMapping(path = "authenticate")

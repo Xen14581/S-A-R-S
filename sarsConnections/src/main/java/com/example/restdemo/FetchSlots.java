@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FetchShifts extends CrudRepository<Shifts,Integer> {
+public interface FetchSlots extends CrudRepository<Slots,Integer> {
     
     @Override
-    List<Shifts> findAll();
+    List<Slots> findAll();
 }
