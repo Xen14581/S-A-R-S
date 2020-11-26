@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import "./DoctorsList.css"
 import AdminTabs from './AdminTabs'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 function DoctorsList({match}) {
     const specialization=match.params.specialization;   
     const [search,setSearch]=useState("")
@@ -43,10 +44,13 @@ useEffect(() => {
 		                <div class="doctors__cardInfo">
                       <h4> <strong></strong>Dr.{val.first_name} {val.last_name}</h4>
                       <p><strong>Specialization:</strong> {val.specialty}</p>
-                      <p> <strong> Experience(in years):</strong>12</p>
-                      <p><strong>Fees:</strong> ₹400</p>
-                    	<button class="doctors__cardButton" type="button">View Appointments</button>
-                  	</div>
+                      <p> <strong> Experience(in years):</strong>{val.experience}</p>
+                      <p><strong>Fees:</strong> ₹{val.fees}</p>
+                    <Link to={{
+                      pathname:`/viewappointments/${val.id}`,
+                      d_id:val.id
+                    }}>	<button class="doctors__cardButton" type="button">View Appointments</button> </Link>
+                   	</div>
               </div>
             </div>
         );

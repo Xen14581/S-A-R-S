@@ -1,0 +1,31 @@
+.ahistory{
+   background-image: url("https://cdn-5eb3e250f911c8131804d584.closte.com/wp-content/uploads/2020/05/hero-background.jpg");
+   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;   
+}
+
+
+#patients {
+  margin-left:300px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  color:#fff;
+}
+
+#patients td, #patients th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+#patients th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #fff;
+
+  color: #000;
+}

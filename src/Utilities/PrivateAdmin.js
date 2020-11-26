@@ -20,6 +20,4 @@ const PrivateAdmin = ({ component: Component, ...rest }) => {
     />
   )
 };
-
-
 export default PrivateAdmin;

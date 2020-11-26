@@ -19,3 +19,4 @@ export const setUserSession = (jwt, user) => {
   sessionStorage.setItem('token', jwt);
   sessionStorage.setItem('user', JSON.stringify(user))
 }
+

@@ -1,19 +1,20 @@
 import {Avatar} from '@material-ui/core'
 import React,{useState,useEffect} from 'react'
-import './Notes.css'
-import Tabs from './Tabs'
+import './AddNotes.css'
+import DocTabs from './DocTabs'
 import {getUser} from '../Utilities/UserServices'
 import axios from 'axios'
 
-function Notes({match}) {
+function AddNotes({match}) { 
 const user = getUser()
 const auth = `Bearer ${sessionStorage.getItem('token')}`
 const[note,setNote] = useState([])
 const [appointments,setAppointments] = useState([])
-const [filternotes,setFilterNotes] = useState([])
+const [filteraddnotes,setFilterAddNotes] = useState([])
 const [filterAppointments,setFilterAppointments] = useState([])
-const [doctor,setDoctor] = useState([])
 const [render,setRender] = useState([])
+const [comment,setComment] = useState('')
+const [unique,setUnique] = useState([])
 useEffect(async()=>{
     let data = await axios.get('http://localhost:8080/getNotes',{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
@@ -35,59 +36,67 @@ useEffect(async()=>{
    setAppointments(res.data)
 })
 },[setAppointments,auth])
-console.log(appointments)
 useEffect(()=>{
  setFilterAppointments(
      appointments.filter((app)=>{ 
-        return app.d_id === parseInt(match.params.d_id) && app.p_id=== user.id
+        return app.d_id === 1 && app.p_id=== parseInt(match.params.p_id)
      })
  )   
 },[setFilterAppointments,appointments])
-useEffect(async()=>{
-  let data = await axios.get(`http://localhost:8080/getDoctor/${match.params.d_id}`,{headers:{
-            "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "PUT, DELETE, POST, GET, OPTIONS",
-            "Authorization": auth
- }}).then((res)=>{
-   setDoctor(res.data)
-})  
-},[setDoctor,auth])
+
 
 
 useEffect(()=>{
-    setFilterNotes(
+    setFilterAddNotes(
         note.filter((fa)=>{
-            return note.some((n)=>{
+            return filterAppointments.some((n)=>{
                 return n.a_id === fa.a_id
             })
         })
     )
-},[setFilterNotes,filterAppointments,note])
+},[setFilterAddNotes,filterAppointments,note])
 useEffect(()=>{ 
     filterAppointments.some((app)=>{
-                return filternotes.some((n)=>{
+                return filteraddnotes.some((n)=>{
                 if(n.a_id=== app.a_id){ 
-                    console.log(n.note)
                     let data = {
                         note: n.note,
                         slot:app.a_datetime
                         
                     } 
-                    setRender([data])
+                    setRender(oldArray=>{return [...oldArray,data]})
                 }   
         })
     })
-    
 
-},[setRender,filterAppointments,filternotes])
-function notes(val)
+console.log(unique)
+},[setRender,filterAppointments,filteraddnotes])
+
+
+console.log(render)
+const postNote= ()=>{
+    const  a={
+        a_id: parseInt(match.params.a_id),
+        note: comment
+    }
+    axios.post('http://localhost:8080/addNotes',a,{headers:{
+            "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "PUT, DELETE, POST, GET, OPTIONS",
+            "Authorization": auth
+ }}).then((res)=>{
+     window.location.reload(false);
+ })
+}
+
+
+function addnotes(val)
     {
         return(
             <div className="note">
                     <div className="note__doctor">
-                            <Avatar src = {doctor.img} alt=""/>
-                            <p>{doctor.first_name} {doctor.last_name}</p>
+                            <Avatar src = {user.img} alt=""/>
+                            <p>Dr.{user.first_name} {user.last_name}</p>
         <p>,{val.slot}</p>    
                     </div>
                     <div className="note__content">
@@ -102,17 +111,20 @@ function notes(val)
     
     
     return (
-        <div className="notes">
-            <div className="notes__header">
-            <Tabs/>
+        <div className="addnotes">
+            <div className="addnotes__header">
+            <DocTabs/>
                 </div>
-            <div className="notes__list">
-                {render.map(notes)}                
+            <div className="addnotes__list">
+                {render.map(addnotes)}                
             </div>
-            
+            <div className = "addNotes">
+            <input type="text" placeholder="Notes" onChange={(e)=>{setComment(e.target.value)}}/>
+            <button onClick={postNote}>Post</button>
+            </div>
                 </div>
             
     )
 }
 
-export default Notes
+export default AddNotes

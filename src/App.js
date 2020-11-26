@@ -18,7 +18,13 @@ import DoctorsList from '../src/AdminSide/DoctorsList'
 import PrivateDoctor from '../src/Utilities/PrivateDoctor'
 import PrivateAdmin from '../src/Utilities/PrivateAdmin'
 import PrivatePatient from '../src/Utilities/PrivatePatient'
-import NotesDoctors from "./PatientSide/NotesDoctors";
+import NotesDoctors from "./PatientSide/NotesDoctors"
+import AHistory from './DoctorSide/AHistory'
+import Prescriptions from './PatientSide/Prescriptions'
+import ADetails from './DoctorSide/ADetails'
+import AddNotes from './DoctorSide/AddNotes'
+import ViewAppointments from './AdminSide/ViewAppointments'
+import BookApp from "./PatientSide/BookApp";
 function App() {
   return (
      <Router>
@@ -34,19 +40,26 @@ function App() {
         <Switch>
         <PrivatePatient path="/home" exact component={Home}/>
         <PrivatePatient path='/appointments' exact component={Appointments}/>
-        <PrivatePatient path='/notes/:doc_id' exact component={Notes}/>
+        <PrivatePatient path='/notes/:d_id' exact component={Notes}/>
           <PrivatePatient path='/doctors/:specialization' exact component={Doctors}/>
           <PrivateRoute path="/profile" exact component ={Profile}/>
-          <PrivateRoute path = "/doctorsnotes" exact component = {NotesDoctors}/>
+          <PrivatePatient path = "/doctorsnotes" exact component = {NotesDoctors}/>
+          <PrivatePatient path ='/prescriptions' exact component={Prescriptions}/>
+          <PrivatePatient path='/bookappointments/:d_id' component={BookApp}/>
         </Switch>
         <Switch>
           <PrivateDoctor path='/dochome' exact component={DocHome}/>
+          <PrivateDoctor path='/appointmenthistory' exact component={AHistory}/>
+          <PrivateDoctor path='/appointmentdetails' exact component={ADetails}/>
+          <PrivateDoctor path='/addnotes/:a_id/:p_id' exact component={AddNotes} />
+                    
         </Switch>
         <Switch>
           <PrivateAdmin path = '/adminhome' exact component={AdminHome}/>
           <PrivateAdmin path="/adddoctors" exact component={AddDoctors}/>
           <PrivateAdmin path="/specialization" exact component={Specialization}/>
           <PrivateAdmin path="/doctorslist/:specialization" exact component ={DoctorsList}/>
+          <PrivateAdmin path ="/viewappointments/:d_id" exact component = {ViewAppointments}/>
         </Switch>
       </div>
     </Router> 

@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import "./Doctors.css"
 import Tabs from './Tabs'
 import axios from 'axios' 
@@ -45,9 +46,12 @@ useEffect(() => {
 		                <div class="doctors__cardInfo">
                       <h4> <strong></strong>Dr.{val.first_name} {val.last_name}</h4>
                       <p><strong>Specialization:</strong> {val.specialty}</p>
-                      <p> <strong> Experience(in years):</strong>4</p>
-                      <p><strong>Fees:</strong> ₹400</p>
-                    	<button class="doctors__cardButton" type="button">Book Appointment</button>
+                      <p> <strong> Experience(in years):</strong>{val.experience}</p>
+                      <p><strong>Fees:</strong> ₹{val.fees}</p>
+                    	<Link to={{
+                        pathname:`/bookappointments/${val.id}`,
+                        d_id:val.id
+                      }}><button class="doctors__cardButton">Book Appointment</button> </Link>
                   	</div>
               </div>
             </div>

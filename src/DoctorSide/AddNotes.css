@@ -1,0 +1,90 @@
+.addnotes{
+background-image:url("https://cutewallpaper.org/21/wallpaper-medical/Best-50+-Medical-Wallpaper-on-HipWallpaper-Medical-.jpg");
+background-position: center center;
+background-repeat:no-repeat;
+height:100vh;
+width:auto;
+display:flex;
+flex-direction: column;
+  overflow-y: overlay;
+  overflow-x: overlay;
+}
+
+.addnotes__header{
+    display:flex;
+    flex-direction: column;
+}
+
+.addnotes__header>input{
+      border: none;
+  /* margin-bottom: 10px; */
+  height: 28px;
+  margin-left: 120px;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.addnotes__header>input:focus{
+    outline: none;
+}
+
+.note{
+    border-radius: 13px;
+    margin-left:10px;
+    margin-top:50px;
+    background:white;
+    width:90vw;
+    max-height:250px;
+}
+
+.note__doctor{
+    margin-left:10px;
+    display: flex;
+    align-items:center;
+}
+
+.note__doctor>h4{
+    margin-left:5px
+}
+
+.note__doctor>p{
+    margin-left:5px;
+    
+}
+
+.note__content{
+    margin-left:15px;
+}
+.addNotes{
+    border-top:1px solid white;
+    display:flex;
+    justify-content: center;
+    position: absolute;
+    top:90%;
+    position:sticky;
+}
+
+.addNotes>input{
+    border: none;
+   margin-top:10px;
+  margin-bottom: 10px;
+  height: 20px;
+  /* margin-left: 120px; */
+  width: 600px;
+  background-color: #fff;
+  border-radius: 10px;   
+  position:sticky;  
+}
+.addNotes>input:focus{
+    outline:none;
+}
+
+.addNotes>button{
+    border:none;
+    margin-top:11px;
+    background-color: #fff;
+    width:50px;
+    height:20px;
+    border-radius:10pc;
+}

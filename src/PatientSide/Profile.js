@@ -1,4 +1,4 @@
-    import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Tabs from './Tabs'
 import axios from 'axios'
 import './Profile.css'
@@ -10,6 +10,19 @@ function Profile() {
     const [newPassword,setNewPassword] = useState("")
     const user = getUser()
     const name = `${user.first_name} ${user.last_name}`
+    const [spec,setSpec] = useState('')
+    
+        useEffect(async()=>{
+            if(user.role==='d'){let data = await axios.get(`http://localhost:8080/getDoctor/${user.id}`,{headers:{
+            "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "PUT, DELETE, POST, GET, OPTIONS",
+            "Authorization":`Bearer ${sessionStorage.getItem('token')}`
+ }}).then((res)=>{
+     let response = res.data
+     setSpec(response.specialty)
+ })}
+        },[setSpec])
     const changePassword=()=>{
          const data = {
         'username':user.email,
@@ -17,8 +30,20 @@ function Profile() {
      }
     axios.post("http://localhost:8080/authenticate",data)
     .then(res=>{
-        alert("Password Changed") 
-        
+       const data = {
+      'id':user.id,
+      'first_name':user.first_name,  
+      'last_name':user.last_name,
+      'gender':user.gender,
+      'dob':user.dob,
+      'email':user.email,
+      'password':newPassword,
+      'ph_no':user.ph_no,
+      'role':user.role         
+    }
+     axios.post('http://localhost:8080/addUser',data).then((res)=>{
+         alert("Password Changed successfully")
+     })   
     })
     .catch(er=>{
       alert("The given Password is incorrect")
@@ -37,8 +62,9 @@ function Profile() {
             <img src ="https://www.journalnetwork.org/assets/default-profile-54364fb08cf8b2a24e80ed8969012690.jpg" alt = "profile picture" />
             </div>
             <div className="profile__name">
-            <p><strong>Name:</strong> {name}</p>
+            <p><strong>Name:</strong>{user.role==='d'?(<p>Dr.{name}</p>):(name)}</p>
             </div>
+            {user.role==='d'?(<div className="profile__name"> <p><strong> Specialization:</strong> {spec}</p> </div>):(<div></div>)}
             <div className="profile__dateOfBirthandPh_no" >
                 <p><strong>Date of Birth:</strong> {user.dob}</p>
                 <p><strong>Phone Number:</strong>+91 {user.ph_no}</p>

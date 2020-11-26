@@ -4,7 +4,6 @@ import AdminTabs from './AdminTabs'
 import './AddDoctors.css'
 
 function AddDoctors(){
-  const [id,setId] = useState(0)
   const [firstName,setFirstName]=useState("")
   const [lastName,setLastName]=useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
@@ -13,7 +12,8 @@ function AddDoctors(){
   const[gender,setGender]=useState("")
   const[email,setEmail]= useState("")
   const[specialization,setSpecialization]=useState('') 
-
+  const[exp,setExp] = useState(0)
+  const [fees,setFees] = useState(0)
   const adddoctor=()=>{
   const data = {
       'first_name':firstName,  
@@ -23,7 +23,7 @@ function AddDoctors(){
       'email':email,
       'password':password,
       'ph_no':phoneNumber,
-      'role':'p'         
+      'role':'d'         
     }
    const login={
       'username':email,
@@ -32,15 +32,17 @@ function AddDoctors(){
     
     axios.post('http://localhost:8080/addUser',data).then(()=>{
     axios.post('http://localhost:8080/authenticate',login).then(res=>{
-      setId(res.data.user.id)
-      const patient ={
-        'id':id,
+
+      const doctor ={
+        'id':res.data.user.id,
         'first_name':firstName,  
       'last_name':lastName,
-      'dob' : dob,
-      'ph_no':phoneNumber 
+      'ph_no':phoneNumber ,
+      'specialty':specialization,
+      'experience':exp,
+      'fees': fees
     } 
-     axios.post('http://localhost:8080/addPatient',patient)
+     axios.post('http://localhost:8080/addDoctor',doctor)
     })
   })}
   return (
@@ -60,13 +62,17 @@ function AddDoctors(){
             <datalist id ="specs">
                  <option value="Dentist"/>
                  <option value="Dietician"/>
-                 <option value="General Physician"/>
+                 <option value="Physician"/>
                  <option value="Gynecologist"/>
                  <option value="Orthopedist"/>
                  <option value="Pediatrician"/>
                  <option value="Physiotherepist"/>
                  <option value="Surgeon"/>
             </datalist>
+            <input type = 'text' placeholder="Experience" onChange={(e)=>{setExp(e.target.value)}}/>
+        </div>
+        <div className="adddoctors__creds">
+            <input placeholder="Fees" onChange={(e)=>{setFees(e.target.value)}}/>
         </div>
         <div className="adddoctors__creds">
           <input type="email" placeholder="E-Mail" onChange={e=>setEmail(e.target.value)}/>

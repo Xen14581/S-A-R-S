@@ -1,4 +1,4 @@
-import {useHistory,NavLink,Link} from 'react-router-dom'
+import {useHistory,NavLink} from 'react-router-dom'
 import React from 'react'
 import './Tabs.css'
 import {removeUserSession} from "../Utilities/UserServices"
@@ -24,7 +24,7 @@ function Tabs() {
    <NavLink to="/profile" activeClassName="selected"> <a className="options__anchors"  >Profile</a></NavLink>
    <NavLink to="/appointments" activeClassName="selected" > <a className="options__anchors"  >Appointments</a></NavLink>
     <NavLink to='/doctorsnotes' activeClassName="selected" ><a className="options__anchors"  >Notes by Doctor</a></NavLink>
-    <Link><a className="options__anchors">History</a></Link>
+    <NavLink to='/prescriptions'activeClassName="selected" ><a className="options__anchors">Prescriptions</a></NavLink>
     <button onClick={logout} className="options__anchors">Logout</button>
 
   </div>
