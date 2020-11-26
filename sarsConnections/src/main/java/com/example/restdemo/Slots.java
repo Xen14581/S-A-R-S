@@ -7,8 +7,12 @@ import javax.persistence.*;
 public class Slots {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    Integer s_id;
+
     @Column(name = "d_id")
-    Integer id;
+    Integer d_id;
 
     @Column(name = "day")
     String day;
@@ -22,20 +26,29 @@ public class Slots {
     public Slots(){
     }
     
-    public Slots(Integer id, String day, String slot_start, String slot_end){
+    public Slots(Integer s_id, Integer d_id, String day, String slot_start, String slot_end){
         super();
-        this.id = id;
+        this.s_id = s_id;
+        this.d_id = d_id;
         this.day = day;
         this.slot_start = slot_start;
         this.slot_end = slot_end;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getS_id() {
+        return s_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setS_id(Integer s_id) {
+        this.s_id = s_id;
+    }
+
+    public Integer getD_Id() {
+        return d_id;
+    }
+
+    public void setD_Id(Integer d_id) {
+        this.d_id = d_id;
     }
 
     public String getDay() {
