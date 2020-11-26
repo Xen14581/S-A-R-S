@@ -125,9 +125,9 @@ public class Controller {
         return noteResponse;
     }
 
-    @GetMapping(path = "getSlots")
-    ResponseEntity<?> getSlots() {
-        return ResponseEntity.ok(fetchSlots.findAll());
+    @GetMapping(path = "getSlots/{d_id}/{day}")
+    ResponseEntity<?> getSlots(@PathVariable(name = "d_id") Integer d_id, @PathVariable(name = "day") String day) {
+        return ResponseEntity.ok(fetchSlots.findAll(d_id, day));
     }
 
     @PostMapping(path = "addSlots")
