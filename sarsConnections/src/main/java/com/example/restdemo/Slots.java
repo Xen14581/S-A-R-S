@@ -8,7 +8,7 @@ public class Slots {
 
     @Id
     @Column(name = "d_id")
-    Integer d_id;
+    Integer id;
 
     @Column(name = "day")
     String day;
@@ -22,24 +22,24 @@ public class Slots {
     public Slots(){
     }
     
-    public Slots(Integer d_id, String day, String slot_start, String slot_end){
+    public Slots(Integer id, String day, String slot_start, String slot_end){
         super();
-        this.d_id = d_id;
+        this.id = id;
         this.day = day;
         this.slot_start = slot_start;
         this.slot_end = slot_end;
     }
 
-    public Integer getD_id() {
-        return this.d_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setD_id(Integer d_id) {
-        this.d_id = d_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDay() {
-        return this.day;
+        return day;
     }
 
     public void setDay(String day) {
@@ -47,7 +47,7 @@ public class Slots {
     }
 
     public String getSlot_start() {
-        return this.slot_start;
+        return slot_start;
     }
 
     public void setSlot_start(String slot_start) {
@@ -55,7 +55,7 @@ public class Slots {
     }
 
     public String getSlot_end() {
-        return this.slot_end;
+        return slot_end;
     }
 
     public void setSlot_end(String slot_end) {

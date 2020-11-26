@@ -51,7 +51,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/addUser").permitAll()
                 .antMatchers("/addDoctor").permitAll()
                 .antMatchers("/addPatient").permitAll()
-                // .antMatchers("/getDoctor/{id}").permitAll()
                 .anyRequest()
                 .authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
