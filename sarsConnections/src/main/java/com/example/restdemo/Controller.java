@@ -1,6 +1,11 @@
 package com.example.restdemo;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.zip.DataFormatException;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -59,13 +64,9 @@ public class Controller {
         return ("<h1>Welcome</h1>");
     }
 
-    @GetMapping(path = "getUsers")
-    ResponseEntity<?> getUsers() {
-        return ResponseEntity.ok(fetchUser.findAll());
-    }
-
     @PostMapping(path = "addUser")
     public User addUser(@RequestBody User u) {
+        u.setPfp(compressBytes(u.getPfp()));
         User userResponse = (User) saveUser.saveUser(u);
         return userResponse;
     }
@@ -125,6 +126,7 @@ public class Controller {
         return noteResponse;
     }
 
+    @CrossOrigin
     @GetMapping(path = "getSlots/{d_id}/{day}")
     ResponseEntity<?> getSlots(@PathVariable(name = "d_id") Integer d_id, @PathVariable(name = "day") String day) {
         return ResponseEntity.ok(fetchSlots.findAll(d_id, day));
@@ -151,6 +153,8 @@ public class Controller {
                 .loadUserByUsername(authenticationRequest.getUsername());
 
         User user = fetchUser.findByEmail(myUserDetails.getUsername()).get();
+
+        user.setPfp(decompressBytes(user.getPfp()));
 
         if (user.getJwt() != null) {
 
@@ -196,5 +200,40 @@ public class Controller {
         return ResponseEntity.ok(patient);
 
     }
+
+    public static byte[] compressBytes(byte[] data) {
+		Deflater deflater = new Deflater();
+		deflater.setInput(data);
+        deflater.finish();
+        
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+		byte[] buffer = new byte[1024];
+		while (!deflater.finished()) {
+			int count = deflater.deflate(buffer);
+			outputStream.write(buffer, 0, count);
+		}
+		try {
+			outputStream.close();
+		} catch (IOException e) {
+		}
+		return outputStream.toByteArray();
+    }
+    
+    public static byte[] decompressBytes(byte[] data) {
+		Inflater inflater = new Inflater();
+		inflater.setInput(data);
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+		byte[] buffer = new byte[1024];
+		try {
+			while (!inflater.finished()) {
+				int count = inflater.inflate(buffer);
+				outputStream.write(buffer, 0, count);
+			}
+			outputStream.close();
+		} catch (IOException ioe) {
+		} catch (DataFormatException e) {
+		}
+		return outputStream.toByteArray();
+	}
 
 }
