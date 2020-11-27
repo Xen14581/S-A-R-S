@@ -13,11 +13,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
 @CrossOrigin
@@ -65,8 +68,9 @@ public class Controller {
     }
 
     @PostMapping(path = "addUser")
-    public User addUser(@RequestBody User u) {
-        u.setPfp(compressBytes(u.getPfp()));
+    public User addUser(@RequestBody User u, @RequestBody MultipartFile image, RedirectAttributes redirectAttributes)
+            throws IOException {
+        u.setPfp(compressBytes(image.getBytes()));
         User userResponse = (User) saveUser.saveUser(u);
         return userResponse;
     }
@@ -234,6 +238,6 @@ public class Controller {
 		} catch (DataFormatException e) {
 		}
 		return outputStream.toByteArray();
-	}
+    }
 
 }
