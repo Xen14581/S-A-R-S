@@ -11,8 +11,8 @@ function Profile() {
     const user = getUser()
     const name = `${user.first_name} ${user.last_name}`
     const [spec,setSpec] = useState('')
-    
-        useEffect(async()=>{
+    console.log(user)
+    useEffect(async()=>{
             if(user.role==='d'){let data = await axios.get(`http://localhost:8080/getDoctor/${user.id}`,{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
             "Access-Control-Allow-Origin": "*",
@@ -39,7 +39,8 @@ function Profile() {
       'email':user.email,
       'password':newPassword,
       'ph_no':user.ph_no,
-      'role':user.role         
+      'role':user.role,
+      'pfp':user.pfp         
     }
      axios.post('http://localhost:8080/addUser',data).then((res)=>{
          alert("Password Changed successfully")
@@ -50,6 +51,28 @@ function Profile() {
     })
 
         }   
+const uploadImage=(e)=>{
+    const data =[ 
+       {'id':user.id,
+      'first_name':user.first_name,  
+      'last_name':user.last_name,
+      'gender':user.gender,
+      'dob':user.dob,
+      'email':user.email,
+      'password':user.password,
+      'ph_no':user.ph_no,
+      'role':user.role,
+      'pfp':null
+},{
+    'pfp':e
+}]
+    axios.post('http://localhost:8080/addUser',data).then((res)=>{
+         window.location.reload(false)
+     })   
+    
+    
+}
+
     return (
         
         <div className = "profile">
@@ -59,7 +82,9 @@ function Profile() {
             <AdminTabs/>):(<DocTabs/>))}
             <div className="profile__creds">
             <div className="profile__dp">
-            <img src ="https://www.journalnetwork.org/assets/default-profile-54364fb08cf8b2a24e80ed8969012690.jpg" alt = "profile picture" />
+            <img src ={user.pfp} alt = "profile picture" />
+            
+            <input type="file" onChange={(e)=>{uploadImage(e.target.files[0])}}/>
             </div>
             <div className="profile__name">
             <p><strong>Name:</strong>{user.role==='d'?(<p>Dr.{name}</p>):(name)}</p>

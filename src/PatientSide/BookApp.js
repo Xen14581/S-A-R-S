@@ -11,7 +11,8 @@ const curr = new Date()
 const array = [{id:0,day:"Sunday"},{id:1,day:"Monday"},{id:2,day:"Tuesday"},{id:3,day:"Wednesday"},{id:4,day:"Thursday"},{id:5,day:"Friday"},{id:6,day:"Saturday"}]
 const arr =array.splice(curr.getDay()) 
 const firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()+ date)).toUTCString();
-const appdate= firstday.split(' ').slice(0,4).join(' ')
+const appdate= firstday.split(' ').slice(1,4).join(' ')
+console.log(appdate)
 const user = getUser()
  const auth = `Bearer ${sessionStorage.getItem('token')}`
    

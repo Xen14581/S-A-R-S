@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import axios from "axios";
 import "./SignUp.css";
+import Nopic from "./default.jpg"
 import {Link} from 'react-router-dom'
 function SignUp(){
   const [firstName,setFirstName]=useState("")
@@ -19,7 +20,8 @@ function SignUp(){
       'email':email,
       'password':password,
       'ph_no':phoneNumber,
-      'role':'p'         
+      'role':'a',
+      'pfp': Nopic
     }
    const login={
       'username':email,
