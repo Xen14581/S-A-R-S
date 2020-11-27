@@ -19,11 +19,14 @@ function Prescriptions() {
      let response = res.data
    setAppointments(
        response.filter((r)=>{
-          return r.p_id === user.id
+          return r.p_id === 3
        })
        )
 })
     },[setAppointments,auth])
+
+
+    console.log(appointments)
     useEffect(async()=>{
         let data = await axios.get('http://localhost:8080/getMedications',{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
@@ -40,15 +43,35 @@ useEffect(()=>{
     setRender(
         meds.filter((med)=>{
             return appointments.some((app)=>{
-                return app.a_id === med.a_id
+ 
+               return app.a_id === med.a_id
             })
         })
     )
    
 },[appointments,setRender,meds])
-    return (
+console.log(render)    
+const table=(val)=>{
+    return(
+        <tr>
+            <td>{val.a_id}</td>
+            <td>{val.med_name}</td>
+        </tr>
+    )
+}
+
+
+
+return (
         <div className="prescriptions">
             <Tabs/>
+            <div className="prescriptions__meds">
+                 <table id="patients">
+                            <th >Appointment</th>
+                        <th>Meds</th>  
+                        {render.map(table)}
+                    </table> 
+            </div>
         </div>
     )
 }

@@ -5,3 +5,77 @@
   overflow-y: overlay;
   overflow-x: overlay;
 }
+
+
+.dropdown>button {
+  border: 1px solid white;
+  border-radius: 10px;
+  background:none;
+  height: 28px;    
+  color: black;
+  font-size: 16px;
+    background-color: #fff;
+  border-radius: 10px;
+}
+
+.dropdown {
+ margin-left:   400px;
+  margin-top:40px;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content >a {
+  border:none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content :hover,.dropdownbutton:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+.bookapp__slots{
+  /* margin-left:500px ; */
+  margin-top:50px;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+}
+.bookapp__slots>h1{
+  color:#fff;
+  margin-bottom: 10px;
+}
+.bookapp__slots>p{
+  color:white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.bookapp__slots>button{
+  max-width: 400px;
+  margin-bottom: 10px; 
+  font-size: 17px;
+  border: 1px solid white;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+  padding: 5px 40px;
+  background: none;
+}
+.bookapp__slots>button:hover{
+  background-color: white;
+  color:black;
+}
+.bookapp__slots>button:focus{
+  outline: none;
+}
