@@ -130,10 +130,16 @@ public class Controller {
         return noteResponse;
     }
 
+<<<<<<< HEAD
     @CrossOrigin
     @GetMapping(path = "getSlots/{d_id}/{day}")
     ResponseEntity<?> getSlots(@PathVariable(name = "d_id") Integer d_id, @PathVariable(name = "day") String day) {
         return ResponseEntity.ok(fetchSlots.findAll(d_id, day));
+=======
+    @GetMapping(path = "getSlots")
+    ResponseEntity<?> getSlots() {
+        return ResponseEntity.ok(fetchSlots.findAll());
+>>>>>>> parent of 59ce7ca... fetching slots by id and day
     }
 
     @PostMapping(path = "addSlots")
