@@ -1,11 +1,6 @@
 package com.example.restdemo;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Optional;
-import java.util.zip.DataFormatException;
-import java.util.zip.Deflater;
-import java.util.zip.Inflater;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +8,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
 @CrossOrigin
@@ -68,9 +60,7 @@ public class Controller {
     }
 
     @PostMapping(path = "addUser")
-    public User addUser(@RequestBody User u, @RequestBody MultipartFile image, RedirectAttributes redirectAttributes)
-            throws IOException {
-        u.setPfp(compressBytes(image.getBytes()));
+    public User addUser(@RequestBody User u) {
         User userResponse = (User) saveUser.saveUser(u);
         return userResponse;
     }
@@ -130,16 +120,10 @@ public class Controller {
         return noteResponse;
     }
 
-<<<<<<< HEAD
     @CrossOrigin
     @GetMapping(path = "getSlots/{d_id}/{day}")
     ResponseEntity<?> getSlots(@PathVariable(name = "d_id") Integer d_id, @PathVariable(name = "day") String day) {
         return ResponseEntity.ok(fetchSlots.findAll(d_id, day));
-=======
-    @GetMapping(path = "getSlots")
-    ResponseEntity<?> getSlots() {
-        return ResponseEntity.ok(fetchSlots.findAll());
->>>>>>> parent of 59ce7ca... fetching slots by id and day
     }
 
     @PostMapping(path = "addSlots")
@@ -163,8 +147,6 @@ public class Controller {
                 .loadUserByUsername(authenticationRequest.getUsername());
 
         User user = fetchUser.findByEmail(myUserDetails.getUsername()).get();
-
-        user.setPfp(decompressBytes(user.getPfp()));
 
         if (user.getJwt() != null) {
 
@@ -209,41 +191,6 @@ public class Controller {
         Optional<Patient> patient = fetchPatient.findById(id);
         return ResponseEntity.ok(patient);
 
-    }
-
-    public static byte[] compressBytes(byte[] data) {
-		Deflater deflater = new Deflater();
-		deflater.setInput(data);
-        deflater.finish();
-        
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
-		byte[] buffer = new byte[1024];
-		while (!deflater.finished()) {
-			int count = deflater.deflate(buffer);
-			outputStream.write(buffer, 0, count);
-		}
-		try {
-			outputStream.close();
-		} catch (IOException e) {
-		}
-		return outputStream.toByteArray();
-    }
-    
-    public static byte[] decompressBytes(byte[] data) {
-		Inflater inflater = new Inflater();
-		inflater.setInput(data);
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
-		byte[] buffer = new byte[1024];
-		try {
-			while (!inflater.finished()) {
-				int count = inflater.inflate(buffer);
-				outputStream.write(buffer, 0, count);
-			}
-			outputStream.close();
-		} catch (IOException ioe) {
-		} catch (DataFormatException e) {
-		}
-		return outputStream.toByteArray();
     }
 
 }

@@ -23,6 +23,9 @@ public class Appointment {
     @Column(name = "p_id")
     Integer p_id;
 
+    @Column(name = "status")
+    String status;
+
     // @OneToOne(mappedBy = "appointment")
     // private Notes notes;
 
@@ -33,11 +36,12 @@ public class Appointment {
     public Appointment(){
     }
 
-    public Appointment(String a_datetime, Integer d_id, Integer p_id){
+    public Appointment(String a_datetime, Integer d_id, Integer p_id, String status){
         super();
         this.a_datetime = a_datetime;
         this.d_id = d_id;
         this.p_id = p_id;
+        this.status = status;
     }
 
     public Integer getA_id() {
@@ -70,6 +74,14 @@ public class Appointment {
 
     public void setP_id(Integer p_id) {
         this.p_id = p_id;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }
