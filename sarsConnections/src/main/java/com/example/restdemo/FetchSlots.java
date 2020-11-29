@@ -12,4 +12,7 @@ public interface FetchSlots extends CrudRepository<Slots,Integer> {
     @Query("Select slot From Slots slot where slot.d_id = :d_id And slot.day = :day")
     List<Slots> findAll(Integer d_id, String day);
 
+    @Query("Select slots from Slots slots Where slots.d_id = d_id")
+	List<Slots> findByD_Id(Integer d_Id);
+
 }

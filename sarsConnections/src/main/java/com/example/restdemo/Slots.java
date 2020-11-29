@@ -8,7 +8,7 @@ public class Slots {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "s_id")
     Integer s_id;
 
     @Column(name = "d_id")
@@ -26,9 +26,8 @@ public class Slots {
     public Slots(){
     }
     
-    public Slots(Integer s_id, Integer d_id, String day, String slot_start, String slot_end){
+    public Slots(Integer d_id, String day, String slot_start, String slot_end){
         super();
-        this.s_id = s_id;
         this.d_id = d_id;
         this.day = day;
         this.slot_start = slot_start;

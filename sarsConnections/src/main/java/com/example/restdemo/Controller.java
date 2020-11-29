@@ -73,6 +73,27 @@ public class Controller {
     @PostMapping(path = "addDoctor")
     public Doctor addDoctor(@RequestBody Doctor d) {
         Doctor doctorResponse =  saveDoctor.saveDoctor(d);
+        String days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        String shift1[] = {"10:30", "11:00", "11:30", "12:00", "12:30", "13:00"};
+        String shift2[] = {"14:00", "14:30", "15:00", "15:30", "16:00"};
+        for (int i = 0; i < days.length; i++) {
+            for (int j = 0; j < shift1.length - 1; j++){
+                Slots s = new Slots();
+                s.setD_Id(d.getId());
+                s.setDay(days[i]);
+                s.setSlot_start(shift1[j]);
+                s.setSlot_end(shift1[j+1]);
+                saveSlots.saveSlots(s);
+            }
+            for (int k = 0; k < shift2.length - 1; k++){
+                Slots s = new Slots();
+                s.setD_Id(d.getId());
+                s.setDay(days[i]);
+                s.setSlot_start(shift2[k]);
+                s.setSlot_end(shift2[k+1]);
+                saveSlots.saveSlots(s);
+            }
+        }
         return doctorResponse;
     }
 
@@ -98,9 +119,9 @@ public class Controller {
         return appointmentResponse;
     }
 
-    @GetMapping(path = "getMedications")
-    ResponseEntity<?> getMedications() {
-        return ResponseEntity.ok(fetchMedications.findAll());
+    @GetMapping(path = "getMedications/{a_id}")
+    ResponseEntity<?> getMedications(@PathVariable(name = "a_id") Integer a_id) {
+        return ResponseEntity.ok(fetchMedications.findByA_id(a_id));
     }
 
     @PostMapping(path = "addMedications")
@@ -124,12 +145,6 @@ public class Controller {
     @GetMapping(path = "getSlots/{d_id}/{day}")
     ResponseEntity<?> getSlots(@PathVariable(name = "d_id") Integer d_id, @PathVariable(name = "day") String day) {
         return ResponseEntity.ok(fetchSlots.findAll(d_id, day));
-    }
-
-    @PostMapping(path = "addSlots")
-    public Slots addSlots(@RequestBody Slots s) {
-        Slots slotResponse = (Slots) saveSlots.saveSlots(s);
-        return slotResponse;
     }
 
     @PostMapping(path = "authenticate")
