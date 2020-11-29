@@ -68,7 +68,6 @@ useEffect(()=>{
     filterAppointments.some((app)=>{
                 return filternotes.some((n)=>{
                 if(n.a_id=== app.a_id){ 
-                    console.log(n.note)
                     let data = {
                         note: n.note,
                         slot:app.a_datetime

@@ -8,13 +8,17 @@ const [slots,setSlots] = useState([])
 const [date,setDate] =useState(0)
 const [day,setDay] = useState('')
 const curr = new Date()
-const array = [{id:0,day:"Sunday"},{id:1,day:"Monday"},{id:2,day:"Tuesday"},{id:3,day:"Wednesday"},{id:4,day:"Thursday"},{id:5,day:"Friday"},{id:6,day:"Saturday"}]
-const arr =array.splice(curr.getDay()) 
-const firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()+ date)).toUTCString();
+const array = [{id:1,day:"Monday"},{id:2,day:"Tuesday"},{id:3,day:"Wednesday"},{id:4,day:"Thursday"},{id:5,day:"Friday"},{id:6,day:"Saturday"}]
+let firstday =new Date(curr.setDate(curr.getDate() - curr.getDay()));
+if(date>curr.getDay()){
+ firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()+ date)).toUTCString();
+}
+else{
+    firstday=new Date(curr.setDate(curr.getDate() - curr.getDay()+7+ date)).toUTCString();
+}
 const appdate= firstday.split(' ').slice(1,4).join(' ')
-console.log(appdate)
 const user = getUser()
- const auth = `Bearer ${sessionStorage.getItem('token')}`
+const auth = `Bearer ${sessionStorage.getItem('token')}`
    
 
 const getData = async(no,val)=>{
@@ -40,15 +44,15 @@ const app = (val)=>{
     )
 }
 
-
 const bookAppointment =async(start)=>{
 
 let appointments = []
-let datetime = `${appdate} ${start}`
+var datetime = `${appdate} ${start}`
 let data = {
     'a_datetime':datetime,
     'd_id':parseInt(match.params.d_id),
-    'p_id':user.id
+    'p_id':user.id,
+    'status':'Booked'
 }
 
  if ( window.confirm(`Book an appointment for ${datetime}? `))
@@ -60,13 +64,12 @@ let data = {
  }}).then((res)=>{
     let response = res.data
     response.filter((r)=>{
-        if(r.d_id === parseInt(match.params.d_id) && r.a_datetime ===datetime){
+        if(r.d_id === parseInt(match.params.d_id) && r.a_datetime ===datetime && r.status !=='Cancelled By Patient'){
             appointments.push(r)
         }
     })   
 }).then((res)=>{
-    if(appointments.length === 0){
-    // console.log(data)
+    if(appointments.length === 0 ){
     axios.post('http://localhost:8080/addAppointments',data,{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
             "Access-Control-Allow-Origin": "*",
@@ -98,12 +101,13 @@ return (
                 <div className="dropdown">
   <button className="dropbtn">Select day of the week</button>
   <div className="dropdown-content">
-    {arr.map(buttons)}
+    {array.map(buttons)}
   </div>
    </div>
     {slots.length!==0?(
         <div className = "bookapp__slots">
             <h1>{day}</h1>
+            <h3>Date: {appdate}</h3>
             <p>Pick a Slot:</p>
             {slots.map(app)}
             </div>

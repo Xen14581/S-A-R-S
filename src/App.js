@@ -25,6 +25,8 @@ import ADetails from './DoctorSide/ADetails'
 import AddNotes from './DoctorSide/AddNotes'
 import ViewAppointments from './AdminSide/ViewAppointments'
 import BookApp from "./PatientSide/BookApp";
+import BookedApp from './PatientSide/BookedApp'
+import AddPrescriptions from './DoctorSide/AddPrescriptions'
 function App() {
   return (
      <Router>
@@ -45,14 +47,15 @@ function App() {
           <PrivateRoute path="/profile" exact component ={Profile}/>
           <PrivatePatient path = "/doctorsnotes" exact component = {NotesDoctors}/>
           <PrivatePatient path ='/prescriptions' exact component={Prescriptions}/>
-          <PrivatePatient path='/bookappointments/:d_id' component={BookApp}/>
+          <PrivatePatient path='/bookappointments/:d_id' exact component={BookApp}/>
+          <PrivatePatient path ='/bookedappointments' exact component = {BookedApp}/>
         </Switch>
         <Switch>
           <PrivateDoctor path='/dochome' exact component={DocHome}/>
           <PrivateDoctor path='/appointmenthistory' exact component={AHistory}/>
           <PrivateDoctor path='/appointmentdetails' exact component={ADetails}/>
           <PrivateDoctor path='/addnotes/:a_id/:p_id' exact component={AddNotes} />
-                    
+          <PrivateDoctor path = '/addprescriptions/:a_id/:p_id' exact component ={AddPrescriptions}/>          
         </Switch>
         <Switch>
           <PrivateAdmin path = '/adminhome' exact component={AdminHome}/>

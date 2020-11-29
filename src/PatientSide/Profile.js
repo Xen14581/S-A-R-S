@@ -5,6 +5,7 @@ import './Profile.css'
 import {getUser} from '../Utilities/UserServices'
 import DocTabs from '../DoctorSide/DocTabs'
 import AdminTabs from '../AdminSide/AdminTabs'
+import Default from '../default.jpg'
 function Profile() {
     const [oldPassword,setOldPassword] = useState("")
     const [newPassword,setNewPassword] = useState("")
@@ -39,8 +40,7 @@ function Profile() {
       'email':user.email,
       'password':newPassword,
       'ph_no':user.ph_no,
-      'role':user.role,
-      'pfp':user.pfp         
+      'role':user.role,  
     }
      axios.post('http://localhost:8080/addUser',data).then((res)=>{
          alert("Password Changed successfully")
@@ -49,31 +49,11 @@ function Profile() {
     .catch(er=>{
       alert("The given Password is incorrect")
     })
+}   
 
-        }   
-const uploadImage=(e)=>{
-    const data =[ 
-       {'id':user.id,
-      'first_name':user.first_name,  
-      'last_name':user.last_name,
-      'gender':user.gender,
-      'dob':user.dob,
-      'email':user.email,
-      'password':user.password,
-      'ph_no':user.ph_no,
-      'role':user.role,
-      'pfp':null
-},{
-    'pfp':e
-}]
-    axios.post('http://localhost:8080/addUser',data).then((res)=>{
-         window.location.reload(false)
-     })   
-    
-    
-}
 
-    return (
+    
+return (
         
         <div className = "profile">
             {user.role==="p"?(
@@ -82,9 +62,8 @@ const uploadImage=(e)=>{
             <AdminTabs/>):(<DocTabs/>))}
             <div className="profile__creds">
             <div className="profile__dp">
-            <img src ={user.pfp} alt = "profile picture" />
+            <img src ={Default} alt = "profile picture" />
             
-            <input type="file" onChange={(e)=>{uploadImage(e.target.files[0])}}/>
             </div>
             <div className="profile__name">
             <p><strong>Name:</strong>{user.role==='d'?(<p>Dr.{name}</p>):(name)}</p>

@@ -25,9 +25,10 @@ function AHistory() {
  }}).then((a)=>{
      let data = {
         slot:r.a_datetime,
+        status: r.status,
         patient:`${a.data.first_name} ${a.data.last_name}` 
      }
-     if(r.d_id ===1){setAppointments((oldArray)=>{
+     if(r.d_id ===user.id){setAppointments((oldArray)=>{
          return [...oldArray,data]
      })}
      
@@ -40,7 +41,7 @@ function AHistory() {
 const table=(val)=>{
     return(
         <tr>
-            <td>{val.slot}</td>
+            <td>{val.slot}  ({val.status})</td>
             <td>{val.patient}</td>
         </tr>
     )

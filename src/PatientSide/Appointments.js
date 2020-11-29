@@ -49,7 +49,7 @@ function Appointments() {
                     onChange={e=>setSearch(e.target.value)}
                  />
                     
-                
+               <Link to ="/bookedappointments"> <a>Booked Appointments</a> </Link>
                 </div>
             
             <div className="appointments__doctorsList">

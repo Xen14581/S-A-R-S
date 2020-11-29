@@ -23,6 +23,7 @@ function ViewAppointments({match}) {
             "Authorization": auth
  }}).then((a)=>{
      let data = {
+         status: r.status,
         slot:r.a_datetime,
         patient:`${a.data.first_name} ${a.data.last_name}` 
      }
@@ -39,7 +40,7 @@ function ViewAppointments({match}) {
 const table=(val)=>{
     return(
         <tr>
-            <td>{val.slot}</td>
+            <td>{val.slot} ({val.status})</td>
             <td>{val.patient}</td>
         </tr>
     )

@@ -9,7 +9,6 @@
 .appointments__headerSearch {
   margin-top: 110px;
   display: flex;
-  align-items: center;
 }
 
 .appointments__headerSearch > input {
@@ -22,10 +21,28 @@
   border-radius: 10px;
 }
 
+
+.appointments__headerSearch> a{
+  margin-left:400px;
+  font-size: 17px;
+  border: 1px solid white;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+  padding: 5px 40px;
+  padding-bottom: 5px;
+  background: none;
+}
+.appointments__headerSearch> a:hover{
+  background-color: white;
+  color:black;
+}
 .appointments__headerSearch > input:focus {
   outline: none;
 }
-
+.appointments__headerSearch>a:focus{
+  outline:none;
+}
 .appointments__doctorsList {
   display: flex;
   flex-wrap: wrap;

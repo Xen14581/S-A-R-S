@@ -11,10 +11,8 @@ const auth = `Bearer ${sessionStorage.getItem('token')}`
 const[note,setNote] = useState([])
 const [appointments,setAppointments] = useState([])
 const [filteraddnotes,setFilterAddNotes] = useState([])
-const [filterAppointments,setFilterAppointments] = useState([])
 const [render,setRender] = useState([])
 const [comment,setComment] = useState('')
-const [unique,setUnique] = useState([])
 useEffect(async()=>{
     let data = await axios.get('http://localhost:8080/getNotes',{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
@@ -25,7 +23,6 @@ useEffect(async()=>{
    setNote(res.data)
 })
 },[setNote,auth])
-
 useEffect(async()=>{
     let data = await axios.get('http://localhost:8080/getAppointments',{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
@@ -33,30 +30,24 @@ useEffect(async()=>{
             "Access-Control-Allow-Methods": "PUT, DELETE, POST, GET, OPTIONS",
             "Authorization": auth
  }}).then((res)=>{
-   setAppointments(res.data)
+   setAppointments(res.data.filter(r=>{
+        return r.d_id === user.id && r.p_id === parseInt(match.params.p_id)
+   }))
 })
 },[setAppointments,auth])
-useEffect(()=>{
- setFilterAppointments(
-     appointments.filter((app)=>{ 
-        return app.d_id === 1 && app.p_id=== parseInt(match.params.p_id)
-     })
- )   
-},[setFilterAppointments,appointments])
 
-
-
+console.log(appointments)
 useEffect(()=>{
     setFilterAddNotes(
         note.filter((fa)=>{
-            return filterAppointments.some((n)=>{
+            return appointments.some((n)=>{
                 return n.a_id === fa.a_id
             })
         })
     )
-},[setFilterAddNotes,filterAppointments,note])
+},[setFilterAddNotes,appointments,note])
 useEffect(()=>{ 
-    filterAppointments.some((app)=>{
+    appointments.some((app)=>{
                 return filteraddnotes.some((n)=>{
                 if(n.a_id=== app.a_id){ 
                     let data = {
@@ -69,11 +60,8 @@ useEffect(()=>{
         })
     })
 
-console.log(unique)
-},[setRender,filterAppointments,filteraddnotes])
+},[setRender,appointments,filteraddnotes])
 
-
-console.log(render)
 const postNote= ()=>{
     const  a={
         a_id: parseInt(match.params.a_id),

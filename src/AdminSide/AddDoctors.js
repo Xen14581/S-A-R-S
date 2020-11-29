@@ -42,7 +42,9 @@ function AddDoctors(){
       'experience':exp,
       'fees': fees
     } 
-     axios.post('http://localhost:8080/addDoctor',doctor)
+     axios.post('http://localhost:8080/addDoctor',doctor).then(()=>{
+       alert("Doctor has been added")
+     })
     })
   })}
   return (
@@ -99,7 +101,7 @@ function AddDoctors(){
             <input name="gender" id="3" type="radio" value="o"  onClick={e=>setGender(e.target.value)} /> Other
         </div>
             <div className="adddoctors__button">
-          <button onClick={adddoctor}>Add Doctor</button>
+          <button type ="reset" onClick={adddoctor}>Add Doctor</button>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ function DocTabs() {
  <div className="home__headerOptions">
 
    <NavLink to="/profile" activeClassName="selected"> <a className="options__anchors" href="#">Profile</a></NavLink>
-   <NavLink to="/appointmentdetails" activeClassName="selected" > <a className="options__anchors" href="">Appointments Details</a></NavLink>
+   <NavLink to="/appointmentdetails" activeClassName="selected" > <a className="options__anchors" href="">Today's Appointments</a></NavLink>
     <NavLink to='/appointmenthistory' activeClassName='selected'><a className="options__anchors" href="#">Appointments History</a></NavLink>
        <button onClick={logout} className="options__anchors">Logout</button>
   </div>

@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 import axios from "axios";
 import "./SignUp.css";
-import Nopic from "./default.jpg"
-import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 function SignUp(){
+  const history = useHistory()
   const [firstName,setFirstName]=useState("")
   const [lastName,setLastName]=useState("")
   const [phoneNumber,setPhoneNumber] = useState("")
@@ -12,7 +12,7 @@ function SignUp(){
   const[gender,setGender]=useState("")
   const[email,setEmail]= useState("")
   const signup=()=>{
-    const data = {
+    if(firstName!=='' && lastName!==0 && gender!=='' && dob!=="" && password!=='' && email!=='' && phoneNumber !==''){const data = {
       'first_name':firstName,  
       'last_name':lastName,
       'gender':gender,
@@ -20,8 +20,7 @@ function SignUp(){
       'email':email,
       'password':password,
       'ph_no':phoneNumber,
-      'role':'a',
-      'pfp': Nopic
+      'role':'p'
     }
    const login={
       'username':email,
@@ -37,9 +36,13 @@ function SignUp(){
       'dob' : dob,
       'ph_no':phoneNumber 
     } 
-     axios.post('http://localhost:8080/addPatient',patient)
+     axios.post('http://localhost:8080/addPatient',patient).then(()=>{
+       history.push('/login')
+     })
     })
-  })
+  })}else{
+    alert("please fill all the credentials")
+  }
   }
   return (
     <>
@@ -68,18 +71,17 @@ function SignUp(){
         </div>
         <div className="signup__creds">
           <p>Gender:</p>
-
+          
             <input name="gender" id="1" type="radio" value="m"  onClick={e=>setGender(e.target.value)} /> Male
             <br />
             <input name="gender" id="2" type="radio" value="f"  onClick={e=>setGender(e.target.value)} /> Female
             <br />
             <input name="gender" id="3" type="radio" value="o"  onClick={e=>setGender(e.target.value)} /> Other
         </div>
-        <Link to="login">
             <div className="signup__button">
           <button onClick={signup}>Sign Up</button>
         </div>
-        </Link>
+        
       </div>
     </>
   );
