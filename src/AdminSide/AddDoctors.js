@@ -15,7 +15,7 @@ function AddDoctors(){
   const[exp,setExp] = useState(0)
   const [fees,setFees] = useState(0)
   const adddoctor=()=>{
-  const data = {
+   if(firstName!=='' || lastName!==0 || fees===0 || gender!=='' || dob!=="" && password!=='' || email!=='' || phoneNumber !==''||specialization!==''){const data = {
       'first_name':firstName,  
       'last_name':lastName,
       'gender':gender,
@@ -47,6 +47,7 @@ function AddDoctors(){
      })
     })
   })}
+}
   return (
     <>
       <div className="adddoctors__background">

@@ -12,7 +12,8 @@ function SignUp(){
   const[gender,setGender]=useState("")
   const[email,setEmail]= useState("")
   const signup=()=>{
-    if(firstName!=='' && lastName!==0 && gender!=='' && dob!=="" && password!=='' && email!=='' && phoneNumber !==''){const data = {
+    if(firstName!=='' || lastName!==0 || gender!=='' || dob!=="" || password!=='' || email!=='' || phoneNumber !==''){
+      const data = {
       'first_name':firstName,  
       'last_name':lastName,
       'gender':gender,

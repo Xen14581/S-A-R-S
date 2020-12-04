@@ -6,7 +6,6 @@ import LockIcon from "@material-ui/icons/Lock";
 import {setUserSession} from '../src/Utilities/UserServices';
 import axios from 'axios'
 
-
 function LoginPage() {
   const [email,setEmail]=useState('')
    const [password,setPassword]=useState('')

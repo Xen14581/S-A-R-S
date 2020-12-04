@@ -8,9 +8,12 @@ const [slots,setSlots] = useState([])
 const [date,setDate] =useState(0)
 const [day,setDay] = useState('')
 const curr = new Date()
+const today = curr.getDay()
+console.log(today)
 const array = [{id:1,day:"Monday"},{id:2,day:"Tuesday"},{id:3,day:"Wednesday"},{id:4,day:"Thursday"},{id:5,day:"Friday"},{id:6,day:"Saturday"}]
 let firstday =new Date(curr.setDate(curr.getDate() - curr.getDay()));
-if(date>curr.getDay()){
+
+if(date>=today){
  firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()+ date)).toUTCString();
 }
 else{
@@ -24,6 +27,7 @@ const auth = `Bearer ${sessionStorage.getItem('token')}`
 const getData = async(no,val)=>{
     setDate(no)
     setDay(val)
+    
      let data = await axios.get(`http://localhost:8080/getSlots/${match.params.d_id}/${val}`,{headers:{
             "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Authorization",
             "Access-Control-Allow-Origin": "*",
